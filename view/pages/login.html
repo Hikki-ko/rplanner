@@ -10,7 +10,7 @@
 			integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="/view/css/style.css" />
+		<link rel="stylesheet" href="../css/style.css" />
 	</head>
 	<body class="d-flex h-100 text-center text-bg-dark">
 		<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -109,7 +109,7 @@
 			</ul>
 		</div>
 
-		<div class="container-fluid">
+		<div class="container-fluid vh-100">
 			<!-- Left -->
 			<div class="row d-flex justify-content-center align-items-center h-100">
 				<div class="col-md-9 col-lg-6 col-xl-5">
@@ -120,19 +120,41 @@
 					/>
 				</div>
 				<!-- Right -->
-				<div>
-					<form action="">
+				<div class="col-md-8 col-lg-6 col-xl-4 offset-md-1 text-start mt-5">
+					<h2 class="text-center mb-4">Connexion</h2>
+					<form action="login.html" method="POST">
 						<div class="mb-3">
-							<label for="exampleFormControlInput1" class="form-label"
-								>Email address</label
+							<label for="emailInput" class="form-label"
+								>Adresse mail</label
 							>
 							<input
 								type="email"
 								class="form-control"
-								id="exampleFormControlInput1"
+								name="emailInput"
+								id="emailInput"
 								placeholder="name@example.com"
 							/>
 						</div>
+						<div class="mb-4">
+							<label for="passwordInput" class="form-label"
+								>Mot de passe</label
+							>
+							<input
+								type="password"
+								class="form-control"
+								name="passwordInput"
+								id="passwordInput"
+								placeholder="Votre mot de passe"
+							/>
+						</div>
+
+						<div class="text-center mb-3">
+							<button type="submit" class="btn btn-light fw-bold border-white bg-white" name="connect">Se connecter</button>
+						</div>
+
+						<p class="text-center mt-4">Vous n'avez pas de compte ? <a href="account_creation.html">Créer un compte</a></p>
+
+
 					</form>
 				</div>
 			</div>
