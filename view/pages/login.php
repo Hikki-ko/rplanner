@@ -1,3 +1,98 @@
+<?php
+session_start();
+
+// Connexion à la base de données
+
+$db_host = "localhost";
+$db_name = "l223_rpplanner";
+$db_user = "root";
+$db_pwd  = "";
+
+
+try {
+  $pdo = new PDO('mysql:host=' . $db_host . ';charset=utf8;dbname=' . $db_name . '', $db_user, $db_pwd);
+  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+  echo "Erreur de connexion :" . $e->getMessage();
+}
+
+// Définition des listes et variables de vérifications
+
+$erreurs_identifiant= [];
+$erreurs_password = [];
+$erreurs_connexion = [];
+$identifiant_ok = false;
+$password_ok = false;
+
+if (isset($_POST['connect'])) {
+
+
+// -- Champ identifiant -- //
+
+  if (isset($_POST['identifiantInput'])) {
+    if (array_key_exists('identifiantInput', $_POST) && !empty($_POST['identifiantInput'])) {
+      $identifiant_ok = true;
+      $identifiant = strip_tags($_POST['identifiantInput']);
+
+      if (strlen($identifiant) < 2 || strlen($identifiant) > 34) {
+        $erreurs_identifiant[] = "Votre login doit etre composé d'au moins 2 caractères et être inférieur à 34 caractères";
+        $identifiant_ok = false;
+      }
+    } else {
+      $erreurs_identifiant[] = "Le champs 'Identifiant' est vide";
+      $identifiant_ok = false;
+    }
+  }
+
+// -- Champ mot de passe -- //
+
+  if (isset($_POST['passwordInput'])) {
+    if (array_key_exists('passwordInput', $_POST) && !empty($_POST['passwordInput'])) {
+      $password_ok = true;
+      $password = ($_POST['passwordInput']);
+      
+      if (!preg_match('/^(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}$/', $password)) {
+        $erreurs_password[] = '
+        <p>Votre mot de passe doit contenir :</p>
+        <ul>
+          <li>8 caractères minimum</li>
+          <li>1 chiffres minimum</li>
+          <li>1 caractère spéciale minimum</li>
+        </ul>
+        ';
+        $password_ok = false;
+      }
+    } else {
+      $erreurs_password[] = "Le champs 'Mot de passe' est vide";
+      $password_ok = false;
+    }
+  }
+
+  // Vérification finale, relation identifiant et mot de passe
+
+  if ($identifiant_ok && $password_ok) {
+
+    $connexion = $pdo->prepare('SELECT * FROM users WHERE username = :username');
+    $connexion->execute(['username' => htmlspecialchars($identifiant)]);
+
+    $identifiant_bdd = $connexion->fetch(PDO::FETCH_ASSOC);
+
+    if (!$identifiant_bdd) {
+      $erreurs_connexion[] = "Aucun compte avec ce nom d'utilisateur";
+    } else {
+      if (password_verify($password, $identifiant_bdd['password'])) {
+        $_SESSION['username'] = htmlspecialchars($identifiant);
+        // header("Location: ../index.php");
+        // die;
+        echo "<h1 style = 'color : white'>Bonjour : " . htmlspecialchars($identifiant) . "</h1>";
+      } else {
+        $erreurs_connexion[] = "Le mot de passe est invalide";
+      }
+    }
+  }
+}
+?>
+
 <!doctype html>
 <html lang="fr">
 	<head>
@@ -122,18 +217,25 @@
 				<!-- Right -->
 				<div class="col-md-8 col-lg-6 col-xl-4 offset-md-1 text-start mt-5">
 					<h2 class="text-center mb-4">Connexion</h2>
-					<form action="login.html" method="POST">
+					<form action="login.php" method="POST">
 						<div class="mb-3">
-							<label for="emailInput" class="form-label"
-								>Adresse mail</label
+							<label for="identifiantInput" class="form-label"
+								>Identifiant</label
 							>
 							<input
-								type="email"
+								type="text"
 								class="form-control"
-								name="emailInput"
-								id="emailInput"
-								placeholder="name@example.com"
+								name="identifiantInput"
+								id="identifiantInput"
+								placeholder="Votre identifiant"
 							/>
+							<?php
+								if (!empty($erreurs_identifiant)) {
+									echo "<div class='identifiant_errors'>";
+									echo $erreurs_identifiant[0];
+									echo "</div>";
+								}
+							?>
 						</div>
 						<div class="mb-4">
 							<label for="passwordInput" class="form-label"
@@ -146,8 +248,23 @@
 								id="passwordInput"
 								placeholder="Votre mot de passe"
 							/>
+							<?php
+								if (!empty($erreurs_password)) {
+									echo "<div class='password_errors'>";
+									echo $erreurs_password[0];
+									echo "</div>";
+								}
+							?>
 						</div>
 
+						<?php
+							if (!empty($erreurs_connexion)) {
+								echo "<div class='connexion_errors'>";
+								echo $erreurs_connexion[0];
+								echo "</div>";
+							}
+						?>
+						
 						<div class="text-center mb-3">
 							<button type="submit" class="btn btn-light fw-bold border-white bg-white" name="connect">Se connecter</button>
 						</div>
