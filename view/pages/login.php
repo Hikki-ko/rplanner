@@ -1,20 +1,7 @@
 <?php
 session_start();
 
-// Connexion à la base de données
-
-$db_host = "localhost";
-$db_name = "l223_rpplanner";
-$db_user = "root";
-$db_pwd  = "";
-
-
-try {
-  $pdo = new PDO('mysql:host=' . $db_host . ';charset=utf8;dbname=' . $db_name . '', $db_user, $db_pwd);
-  $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-  echo "Erreur de connexion :" . $e->getMessage();
-}
+include_once("../../model/inc.connection.php");
 
 // Définition des listes et variables de vérifications
 
