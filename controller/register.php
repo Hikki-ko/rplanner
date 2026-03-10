@@ -4,4 +4,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $password = $_POST['InputPassword'];
     $confirm = $_POST['PasswordConfirmation'];
     $email = trim($_POST['InputEmail']);
+
+    
 }
