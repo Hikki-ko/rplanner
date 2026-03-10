@@ -1,5 +1,9 @@
 <?php
 session_start();
+include_once("../../model/inc.connexion.php");
+
+$_SESSION['token'] = bin2hex(random_bytes(32));
+
 ?>
 
 <!doctype html>
@@ -116,46 +120,77 @@ session_start();
 		<main class="container mt-5">
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
-				<h1 class="text-center mb-4">Création de compte</h1>
-			<form action="POST">
-				<!-- Identifiant -->
-				 <div class="mb-3">
-					    <label for="validationCustomUsername" class="form-label">Identifiant</label>
-						<div class="input-group has-validation">
-							<span class="input-group-text" id="inputGroupPrepend">@</span>
-							<input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Identifiant" required>
-						</div>
-				<!-- Mot de passe -->
-				 <div class="mb-3">
-					<label for="InputPassword" class="form-label">Mot de passe</label>
-					<input type="password" class="form-control" id="InputPassword" placeholder="Veuillez entrer un mot de passe.">
-				</div>
-				<!-- Confirmation mot de passe -->
-				 <div class="mb-3">
-					<label for="PasswordConfirmation" class="form-label">Confirmez votre mot de passe</label>
-					<input type="password" class="form-control" id="PasswordConfirmation" placeholder="Veuillez confirmer votre mot de passe.">
-				</div>
-				<!-- Email -->
-				<div class="mb-3">
-					<label for="InputEmail" class="form-label">Adresse e-mail</label>
-					<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Veuillez entrer un email.">
-					<div id="emailHelp" class="form-text text-white">Non obligatoire, mais nécessaire pour récupérer vos identifiants.</div>
-				</div>
-				<!-- CGU -->
-				<div class="mb-3 form-check">
-					<input type="checkbox" class="form-check-input" id="exampleCheck1">
-					<label class="form-check-label" for="exampleCheck1">J'accepte les conditions générales d'utilisation.</label>
-				</div>
-				<!-- Captcha -->
-				<div class="mb-3">
-					<label for="CaptchaVerification" class="form-label">Copiez le code ci-dessous</label>
-					<img src="../../model/inc.captcha.php" alt="Code Captcha">
-					<input type="text" name="captcha" id="captcha" placeholder="Entrez le code">
-				</div>
-
-  <button type="submit" class="btn btn-primary">Submit</button>
-  <p>Vous avez déjà un compte ? <a href="login.php">Connectez-vous ici </a>!</p>
-			</form>
+					<h1 class="text-center mb-4">Création de compte</h1>
+					<form action="../../controller/register.php" method="POST">
+						<!-- Token CSRF -->
+						<input type="hidden" name="csrf_token" value="<?= $_SESSION['token'] ?>">
+						<!-- Identifiant -->
+						 <div class="mb-3">
+							<label class="form-label">Identifiant</label>
+							<div class="input-group">
+								<span class="input-group-text">@</span>
+								<input 
+								type="text" 
+								class="form-control"
+								name="inputUsername"
+								minlength="3"
+								maxlength="30"
+								required>
+							</div>
+						 </div>
+						 <!-- Mot de passe -->
+						 <div class="mb-3">
+							<label class="form-label">
+								Mot de passe
+							</label>
+							<input 
+							type="text"
+							class="form-control"
+							name="inputPassword"
+							minlength="8"
+							required>
+						 </div>
+						 <!-- Confirmation mot de passe -->
+						 <div class="mb-3">
+							<label class="form-label">
+								Confirmation du mot de passe
+							</label>
+						 </div>
+						 <!-- Email -->
+						 <div class="mb-3">
+							<input 
+							type="email"
+							class="form-control"
+							name="inputEmail">
+						 </div>
+						 <!-- CGU -->
+						 <div class="mb-3">
+							<input 
+							type="checkbox"
+							class="form-check-input"
+							id="checkCGU"
+							name="checkCGU"
+							required>
+							<label 
+							for="checkCGU" 
+							class="form-check-label">
+							J'ai lu et accepté les conditions générales d'utilisation.
+							</label>
+						 </div>
+						 <!-- Captcha -->
+							<img src="../../model/inc.captcha.php">
+							<input 
+							type="text"
+							name="captcha"
+							placeholder="Entrez le code"
+							required>
+						<!-- Bouton de validation -->
+						 <button
+						 class="btn btn-primary"
+						 type="submit">
+							Créer mon compte
+						 </button>
+					</form>
 			</div>
 				</div>	
 		</main>
