@@ -154,6 +154,7 @@ session_start();
 				</div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
+  <p>Vous avez déjà un compte ? <a href="login.php">Connectez-vous ici </a>!</p>
 			</form>
 			</div>
 				</div>	
