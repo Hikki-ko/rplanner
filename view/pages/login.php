@@ -11,7 +11,7 @@ $erreurs_connexion = [];
 $identifiant_ok = false;
 $password_ok = false;
 
-if (isset($_POST['connect'])) {
+if (isset($_POST['login'])) {
 
 
 // -- Champ identifiant -- //
@@ -21,10 +21,6 @@ if (isset($_POST['connect'])) {
       $identifiant_ok = true;
       $identifiant = strip_tags($_POST['identifiantInput']);
 
-      if (strlen($identifiant) < 2 || strlen($identifiant) > 34) {
-        $erreurs_identifiant[] = "Votre login doit etre composé d'au moins 2 caractères et être inférieur à 34 caractères";
-        $identifiant_ok = false;
-      }
     } else {
       $erreurs_identifiant[] = "Le champs 'Identifiant' est vide";
       $identifiant_ok = false;
@@ -38,17 +34,6 @@ if (isset($_POST['connect'])) {
       $password_ok = true;
       $password = ($_POST['passwordInput']);
       
-      if (!preg_match('/^(?=.*\d)(?=.*[^a-zA-Z0-9]).{8,}$/', $password)) {
-        $erreurs_password[] = '
-        <p>Votre mot de passe doit contenir :</p>
-        <ul>
-          <li>8 caractères minimum</li>
-          <li>1 chiffres minimum</li>
-          <li>1 caractère spéciale minimum</li>
-        </ul>
-        ';
-        $password_ok = false;
-      }
     } else {
       $erreurs_password[] = "Le champs 'Mot de passe' est vide";
       $password_ok = false;
@@ -218,7 +203,7 @@ if (isset($_POST['connect'])) {
 							/>
 							<?php
 								if (!empty($erreurs_identifiant)) {
-									echo "<div class='identifiant_errors'>";
+									echo "<div class='text-danger small mt-1'>";
 									echo $erreurs_identifiant[0];
 									echo "</div>";
 								}
@@ -237,23 +222,21 @@ if (isset($_POST['connect'])) {
 							/>
 							<?php
 								if (!empty($erreurs_password)) {
-									echo "<div class='password_errors'>";
+									echo "<div class='text-danger small mt-1'>";
 									echo $erreurs_password[0];
 									echo "</div>";
 								}
 							?>
+							<?php
+								if (!empty($erreurs_connexion)) {
+									echo "<div class='text-danger small mt-1'>";
+									echo $erreurs_connexion[0];
+									echo "</div>";
+								}
+							?>
 						</div>
-
-						<?php
-							if (!empty($erreurs_connexion)) {
-								echo "<div class='connexion_errors'>";
-								echo $erreurs_connexion[0];
-								echo "</div>";
-							}
-						?>
-						
 						<div class="text-center mb-3">
-							<button type="submit" class="btn btn-light fw-bold border-white bg-white" name="login">Se connecter</button>
+							<button type="submit" class="btn btn-primary" name="login">Se connecter</button>
 						</div>
 
 						<p class="text-center mt-4">Vous n'avez pas de compte ? <a href="account_creation.php">Créer un compte</a></p>
