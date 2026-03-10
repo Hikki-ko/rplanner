@@ -155,13 +155,25 @@ $_SESSION['token'] = bin2hex(random_bytes(32));
 							<label class="form-label">
 								Confirmation du mot de passe
 							</label>
+							<input 
+							type="text"
+							class="form-control"
+							name="confirmationPassword"
+							required>
 						 </div>
 						 <!-- Email -->
 						 <div class="mb-3">
+							<label class="form-label">
+								Email
+							</label>
 							<input 
 							type="email"
 							class="form-control"
 							name="inputEmail">
+							<div 
+							class="form-text text-white">
+								<em>Non obligatoire, mais utile en cas d'oubli des identifiants !</em>
+							</div>
 						 </div>
 						 <!-- CGU -->
 						 <div class="mb-3">
@@ -191,6 +203,7 @@ $_SESSION['token'] = bin2hex(random_bytes(32));
 							Créer mon compte
 						 </button>
 					</form>
+					<p><em>Vous avez déjà un compte ? <a href="">Connectez-vous !</a></em></p>
 			</div>
 				</div>	
 		</main>
