@@ -1,17 +1,20 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>RPlanner</title>
+		<title>Création de compte</title>
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
 			rel="stylesheet"
 			integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="./view/css/cover.css" />
-		<link rel="stylesheet" href="./view/css/style.css" />
+		<link rel="stylesheet" href="../css/style.css" />
 	</head>
 	<body class="d-flex h-100 text-center text-bg-dark">
 		<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -109,44 +112,53 @@
 				</li>
 			</ul>
 		</div>
-		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-			<header class="mb-auto">
-				<div>
-					<h3 class="float-md-start mb-0">Cover</h3>
-					<nav class="nav nav-masthead justify-content-center float-md-end">
-						<a
-							class="nav-link fw-bold py-1 px-0 active"
-							aria-current="page"
-							href="#"
-							>Home</a
-						>
-						<a class="nav-link fw-bold py-1 px-0" href="#"
-							>Créer mon personnage</a
-						>
-						<a class="nav-link fw-bold py-1 px-0" href="#">Tutoriel</a>
-					</nav>
+
+		<main class="container mt-5">
+			<div class="row justify-content-center">
+				<div class="col-md-6 col-lg-4">
+				<h1 class="text-center mb-4">Création de compte</h1>
+			<form action="POST">
+				<!-- Identifiant -->
+				 <div class="mb-3">
+					    <label for="validationCustomUsername" class="form-label">Identifiant</label>
+						<div class="input-group has-validation">
+							<span class="input-group-text" id="inputGroupPrepend">@</span>
+							<input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+						</div>
+				<!-- Mot de passe -->
+				 <div class="mb-3">
+					<label for="InputPassword" class="form-label">Mot de passe</label>
+					<input type="password" class="form-control" id="InputPassword">
 				</div>
-			</header>
-			<main class="px-3">
-				<h1>Cover your page.</h1>
-				<p class="lead">
-					Cover is a one-page template for building simple and beautiful home
-					pages. Download, edit the text, and add your own fullscreen background
-					photo to make it your own.
-				</p>
-				<p class="lead">
-					<a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white"
-						>Commencer mon aventure</a
-					>
-				</p>
-				<p class="lead">
-					Déjà membre ? <a href="./view/pages/login.html">Connectez-vous !</a>
-				</p>
-			</main>
-			<footer class="mt-auto text-white-50">
-				<p>Projet de l'équipe n°2.</p>
-			</footer>
-		</div>
+				<!-- Confirmation mot de passe -->
+				 <div class="mb-3">
+					<label for="PasswordConfirmation" class="form-label">Confirmez votre mot de passe</label>
+					<input type="password" class="form-control" id="PasswordConfirmation">
+				</div>
+				<!-- Email -->
+				<div class="mb-3">
+					<label for="InputEmail" class="form-label">Adresse e-mail</label>
+					<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp">
+					<div id="emailHelp" class="form-text text-white">Non obligatoire, mais nécessaire pour récupérer vos identifiants.</div>
+				</div>
+				<!-- CGU -->
+				<div class="mb-3 form-check">
+					<input type="checkbox" class="form-check-input" id="exampleCheck1">
+					<label class="form-check-label" for="exampleCheck1">J'accepte les conditions générales d'utilisation.</label>
+				</div>
+				<!-- Captcha -->
+				<div class="mb-3">
+					<label for="CaptchaVerification" class="form-label">Copiez le code ci-dessous</label>
+					<img src="../../model/inc.captcha.php" alt="Code Captcha">
+					<input type="text" name="captcha" id="captcha" placeholder="Copiez le code">
+				</div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+			</form>
+			</div>
+				</div>	
+		</main>
+
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"

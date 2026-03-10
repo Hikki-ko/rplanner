@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-include_once("../../model/inc.connection.php");
+include_once("../../model/inc.connexion.php");
 
 // Définition des listes et variables de vérifications
 
@@ -253,10 +253,10 @@ if (isset($_POST['connect'])) {
 						?>
 						
 						<div class="text-center mb-3">
-							<button type="submit" class="btn btn-light fw-bold border-white bg-white" name="connect">Se connecter</button>
+							<button type="submit" class="btn btn-light fw-bold border-white bg-white" name="login">Se connecter</button>
 						</div>
 
-						<p class="text-center mt-4">Vous n'avez pas de compte ? <a href="account_creation.html">Créer un compte</a></p>
+						<p class="text-center mt-4">Vous n'avez pas de compte ? <a href="account_creation.php">Créer un compte</a></p>
 
 
 					</form>

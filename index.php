@@ -1,16 +1,17 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Création de compte</title>
+		<title>RPlanner</title>
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
 			rel="stylesheet"
 			integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="./view/css/cover.css" />
+		<link rel="stylesheet" href="./view/css/style.css" />
 	</head>
 	<body class="d-flex h-100 text-center text-bg-dark">
 		<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -108,73 +109,44 @@
 				</li>
 			</ul>
 		</div>
-
-		<div class="container-fluid vh-100">
-			<!-- Left -->
-			<div class="row d-flex justify-content-center align-items-center h-100">
-				<div class="col-md-8 col-lg-6 col-xl-4 text-start mt-5">
-					<h2 class="text-center mb-4">Créer votre compte</h2>
-					<form action="account_creation.html" method="POST">
-						<div class="mb-3">
-							<label for="emailInput" class="form-label"
-								>Adresse mail</label
-							>
-							<input
-								type="email"
-								class="form-control"
-								name="emailInput"
-								id="emailInput"
-								placeholder="name@example.com"
-							/>
-						</div>
-						<div class="mb-3">
-							<label for="passwordInput" class="form-label"
-								>Mot de passe</label
-							>
-							<input
-								type="password"
-								class="form-control"
-								name="passwordInput"
-								id="passwordInput"
-								placeholder="Votre mot de passe"
-							/>
-						</div>
-
-						<div class="mb-4">
-							<label for="passwordInput" class="form-label"
-								>Mot de passe</label
-							>
-							<input
-								type="password"
-								class="form-control"
-								name="confirmPasswordInput"
-								id="confirmPasswordInput"
-								placeholder="Confirmer votre mot de passe"
-							/>
-						</div>
-
-						<div class="text-center mb-3">
-							<button type="submit" class="btn btn-light fw-bold border-white bg-white" name="connect">Créer un compte</button>
-						</div>
-
-						<p class="text-center mt-4">Vous avez déjà compte ? <a href="login.html">Se connecter</a></p>
-
-
-					</form>
+		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+			<header class="mb-auto">
+				<div>
+					<h3 class="float-md-start mb-0">Cover</h3>
+					<nav class="nav nav-masthead justify-content-center float-md-end">
+						<a
+							class="nav-link fw-bold py-1 px-0 active"
+							aria-current="page"
+							href="#"
+							>Home</a
+						>
+						<a class="nav-link fw-bold py-1 px-0" href="#"
+							>Créer mon personnage</a
+						>
+						<a class="nav-link fw-bold py-1 px-0" href="#">Tutoriel</a>
+					</nav>
 				</div>
-				
-				<!-- Right -->
-				 <div class="col-md-9 col-lg-6 col-xl-5 offset-md-1">
-					<img
-						src="https://doodleipsum.com/600/hand-drawn?i=0293217a2126d91159f5a6717396cbe4"
-						class="img-fluid"
-						alt="Sample image"
-					/>
-				</div>
-				
-			</div>
+			</header>
+			<main class="px-3">
+				<h1>Cover your page.</h1>
+				<p class="lead">
+					Cover is a one-page template for building simple and beautiful home
+					pages. Download, edit the text, and add your own fullscreen background
+					photo to make it your own.
+				</p>
+				<p class="lead">
+					<a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white"
+						>Commencer mon aventure</a
+					>
+				</p>
+				<p class="lead">
+					Déjà membre ? <a href="./view/pages/login.php">Connectez-vous !</a>
+				</p>
+			</main>
+			<footer class="mt-auto text-white-50">
+				<p>Projet de l'équipe n°2.</p>
+			</footer>
 		</div>
-
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
