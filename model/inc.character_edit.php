@@ -129,8 +129,15 @@ function createCharacter($pdo) {
 		$errors[] = "Le lien vers l'image doit être inférieur à 100 caractères et renseigné.";
 	}
 	
+	/* CUSTOM FIELDS */
+	if (!isset($_POST["custom_fields"])) {
+		$custom_fields = null;
+	} else {
+		$custom_fields = $_POST["custom_fields"];
+	}
+	
 	if ($is_good) {
-		$connexion = $pdo->prepare("INSERT INTO `characters` (`campaign_id`, `first_name`, `last_name`, `age`, `nationality`, `pronouns`, `gender`, `sex`, `sexual_orientation`, `occupation`, `voice`, `voice_link`, `psychology`, `hobbies`, `height`, `weight`, `eye_color`, `hair_color`, `physical_description`, `health`, `faceclaim`, `image`) VALUES (:campaign_id, :first_name, :last_name, :age, :nationality, :pronouns, :gender, :sex, :sexual_orientation, :occupation, :voice, :voice_link, :psychology, :hobbies, :height, :weight, :eye_color, :hair_color, :physical_description, :health, :faceclaim, :image);");
+		$connexion = $pdo->prepare("INSERT INTO `characters` (`campaign_id`, `first_name`, `last_name`, `age`, `nationality`, `pronouns`, `gender`, `sex`, `sexual_orientation`, `occupation`, `voice`, `voice_link`, `psychology`, `hobbies`, `height`, `weight`, `eye_color`, `hair_color`, `physical_description`, `health`, `faceclaim`, `image`, `custom_fields`) VALUES (:campaign_id, :first_name, :last_name, :age, :nationality, :pronouns, :gender, :sex, :sexual_orientation, :occupation, :voice, :voice_link, :psychology, :hobbies, :height, :weight, :eye_color, :hair_color, :physical_description, :health, :faceclaim, :image, :custom_fields);");
 		$connexion->execute([
 		':campaign_id' => $_POST["campaign_id"],
 		':first_name' => $_POST["first_name"],
@@ -153,8 +160,10 @@ function createCharacter($pdo) {
 		':physical_description' => $_POST["physical_description"],
 		':health' => $_POST["health"],
 		':faceclaim' => $_POST["faceclaim"],
-		':image' => $_POST["image"]
+		':image' => $_POST["image"],
+		':custom_fields' => $custom_fields
 		]);
+		// Ce header détruit la requete POST après traitement pour ne pas la renvoyer lorsque la page est refresh.
 		header('Location: '.$_SERVER['PHP_SELF']);
 		exit;
 	} else {

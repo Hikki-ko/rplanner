@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
+	// Vérification formulaire d'ajout de personnage.
 	const add_character_form = document.getElementById("add_character_form");
 	add_character_form.addEventListener("submit", (e) => {
 		
@@ -140,9 +141,52 @@ document.addEventListener("DOMContentLoaded", () => {
 			showError(image, "Le lien vers l'image doit être inférieur à 100 caractères et renseigné.");
 		}
 		
+		/* CUSTOM FIELDS */
+		if (isGood) {
+			let custom_fields = document.querySelectorAll(".custom_field");
+			if (custom_fields.length != 0) {
+				let fields_object = {};
+				custom_fields.forEach((field) => {
+					fields_object[field.getAttribute("data_name")] = field.value;
+				})
+				let json = JSON.stringify(fields_object);
+				let hidden_input = document.createElement("input");
+				hidden_input.setAttribute("name", "custom_fields");
+				hidden_input.setAttribute("type", "hidden");
+				hidden_input.value = json;
+				add_character_form.appendChild(hidden_input);
+			}
+		}
+		
 		/* On envoie le formulaire si tout est ok */
 		if (!isGood) {
 			e.preventDefault();
 		}
 	});
+	
+	// Bouton "ajouter un champ".
+	const field_button = document.getElementById("add_field");
+	field_button.addEventListener("click", () => {
+		let custom_fields_div = document.getElementById("custom_fields_container");
+		// Récupération du nom entré
+		let name_input = document.getElementById("new_field_name");
+		// Création du nouvel input
+		let new_field = document.createElement("input");
+		new_field.setAttribute("class", "custom_field");
+		new_field.setAttribute("data_name", name_input.value);
+		new_field.setAttribute("placeholder", name_input.value);
+		// Création du bouton de suppression d'input
+		let delete_button = document.createElement("button")
+		delete_button.setAttribute("type", "button");
+		delete_button.textContent = "Supprimer le champ";
+		// Insertion des deux éléments
+		custom_fields_div.appendChild(new_field);
+		custom_fields_div.appendChild(delete_button);
+		// Ajout de la capacité de suppression au bouton de suppression, qui sera toujours le dernier élément ajoué au div des champs personnalisés.
+		custom_fields_div.lastChild.addEventListener("click", () => {
+			new_field.remove();
+			delete_button.remove();
+		});
+	});
+	
 });

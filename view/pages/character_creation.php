@@ -6,6 +6,9 @@
 </head>
 
 <body>
+	<noscript>
+		<p>Veuillez activer le JavaScript pour le bon fonctionnement de cette page.</p>
+	</noscript>
 	<form method="POST" id="add_character_form">
 		<!-- Champ invisible temporaire jusqu'à l'ajout de la relation campagne-personnage -->
 		<input type="hidden" name="campaign_id" id="campaign_id" value="666">
@@ -30,6 +33,7 @@
 		<textarea name="health" id="health" placeholder="Santé"></textarea>
 		<input type="text" name="faceclaim" id="faceclaim" placeholder="Faceclaim">
 		<input type="text" name="image" id="image" placeholder="Image">
+		<div id="custom_fields_container"></div>
 		<p>Créer un nouveau champ :</p>
 		<input type="text" id="new_field_name" placeholder="Nom du champ">
 		<button type="button" id="add_field">Ajouter le champ</button>
