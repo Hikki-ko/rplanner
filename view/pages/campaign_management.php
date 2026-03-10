@@ -16,5 +16,8 @@
 		
 		<h3>Liste d'objets</h3>
 		<?php showItems($pdo); ?>
+		
+		<h3>Liste de personnage</h3>
+		<?php showCharacters($pdo); ?>
 	</body>
 </html>

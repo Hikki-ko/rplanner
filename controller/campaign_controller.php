@@ -1,6 +1,7 @@
 <?php
 include_once("../model/inc.connexion.php");
 include_once("../model/inc.item_management.php");
+include_once("../model/inc.character_list.php");
 
 if (isset($_POST["add_item"])) {
 	$errors = createItem($pdo);

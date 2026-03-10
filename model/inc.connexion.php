@@ -1,5 +1,5 @@
 <?php
-$db_host = "localhost";
+$db_host = "localhost:3308";
 $db_name = "l223_rplanner";
 $db_user = "root";
 $db_pwd  = "";
