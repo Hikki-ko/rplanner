@@ -123,22 +123,22 @@ session_start();
 					    <label for="validationCustomUsername" class="form-label">Identifiant</label>
 						<div class="input-group has-validation">
 							<span class="input-group-text" id="inputGroupPrepend">@</span>
-							<input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+							<input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" placeholder="Identifiant" required>
 						</div>
 				<!-- Mot de passe -->
 				 <div class="mb-3">
 					<label for="InputPassword" class="form-label">Mot de passe</label>
-					<input type="password" class="form-control" id="InputPassword">
+					<input type="password" class="form-control" id="InputPassword" placeholder="Veuillez entrer un mot de passe.">
 				</div>
 				<!-- Confirmation mot de passe -->
 				 <div class="mb-3">
 					<label for="PasswordConfirmation" class="form-label">Confirmez votre mot de passe</label>
-					<input type="password" class="form-control" id="PasswordConfirmation">
+					<input type="password" class="form-control" id="PasswordConfirmation" placeholder="Veuillez confirmer votre mot de passe.">
 				</div>
 				<!-- Email -->
 				<div class="mb-3">
 					<label for="InputEmail" class="form-label">Adresse e-mail</label>
-					<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp">
+					<input type="email" class="form-control" id="InputEmail" aria-describedby="emailHelp" placeholder="Veuillez entrer un email.">
 					<div id="emailHelp" class="form-text text-white">Non obligatoire, mais nécessaire pour récupérer vos identifiants.</div>
 				</div>
 				<!-- CGU -->
@@ -150,7 +150,7 @@ session_start();
 				<div class="mb-3">
 					<label for="CaptchaVerification" class="form-label">Copiez le code ci-dessous</label>
 					<img src="../../model/inc.captcha.php" alt="Code Captcha">
-					<input type="text" name="captcha" id="captcha" placeholder="Copiez le code">
+					<input type="text" name="captcha" id="captcha" placeholder="Entrez le code">
 				</div>
 
   <button type="submit" class="btn btn-primary">Submit</button>
