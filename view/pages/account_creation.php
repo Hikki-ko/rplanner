@@ -203,7 +203,7 @@ $_SESSION['token'] = bin2hex(random_bytes(32));
 							Créer mon compte
 						 </button>
 					</form>
-					<p><em>Vous avez déjà un compte ? <a href="">Connectez-vous !</a></em></p>
+					<p><em>Vous avez déjà un compte ? <a href="../../controller/login.php">Connectez-vous !</a></em></p>
 			</div>
 				</div>	
 		</main>

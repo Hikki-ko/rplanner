@@ -1,70 +1,3 @@
-<?php
-session_start();
-
-include_once("../../model/inc.connexion.php");
-
-// Définition des listes et variables de vérifications
-
-$erreurs_identifiant= [];
-$erreurs_password = [];
-$erreurs_connexion = [];
-$identifiant_ok = false;
-$password_ok = false;
-
-if (isset($_POST['login'])) {
-
-
-// -- Champ identifiant -- //
-
-  if (isset($_POST['identifiantInput'])) {
-    if (array_key_exists('identifiantInput', $_POST) && !empty($_POST['identifiantInput'])) {
-      $identifiant_ok = true;
-      $identifiant = strip_tags($_POST['identifiantInput']);
-
-    } else {
-      $erreurs_identifiant[] = "Le champs 'Identifiant' est vide";
-      $identifiant_ok = false;
-    }
-  }
-
-// -- Champ mot de passe -- //
-
-  if (isset($_POST['passwordInput'])) {
-    if (array_key_exists('passwordInput', $_POST) && !empty($_POST['passwordInput'])) {
-      $password_ok = true;
-      $password = ($_POST['passwordInput']);
-      
-    } else {
-      $erreurs_password[] = "Le champs 'Mot de passe' est vide";
-      $password_ok = false;
-    }
-  }
-
-  // Vérification finale, relation identifiant et mot de passe
-
-  if ($identifiant_ok && $password_ok) {
-
-    $connexion = $pdo->prepare('SELECT * FROM users WHERE username = :username');
-    $connexion->execute(['username' => htmlspecialchars($identifiant)]);
-
-    $identifiant_bdd = $connexion->fetch(PDO::FETCH_ASSOC);
-
-    if (!$identifiant_bdd) {
-      $erreurs_connexion[] = "Aucun compte avec ce nom d'utilisateur";
-    } else {
-      if (password_verify($password, $identifiant_bdd['password'])) {
-        $_SESSION['username'] = htmlspecialchars($identifiant);
-        // header("Location: ../index.php");
-        // die;
-        echo "<h1 style = 'color : white'>Bonjour : " . htmlspecialchars($identifiant) . "</h1>";
-      } else {
-        $erreurs_connexion[] = "Le mot de passe est invalide";
-      }
-    }
-  }
-}
-?>
-
 <!doctype html>
 <html lang="fr">
 	<head>
@@ -77,7 +10,7 @@ if (isset($_POST['login'])) {
 			integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../view/css/style.css" />
 	</head>
 	<body class="d-flex h-100 text-center text-bg-dark">
 		<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -191,20 +124,20 @@ if (isset($_POST['login'])) {
 					<h2 class="text-center mb-4">Connexion</h2>
 					<form action="login.php" method="POST">
 						<div class="mb-3">
-							<label for="identifiantInput" class="form-label"
+							<label for="usernametInput" class="form-label"
 								>Identifiant</label
 							>
 							<input
 								type="text"
 								class="form-control"
-								name="identifiantInput"
-								id="identifiantInput"
+								name="usernametInput"
+								id="usernametInput"
 								placeholder="Votre identifiant"
 							/>
 							<?php
-								if (!empty($erreurs_identifiant)) {
+								if (!empty($erreurs_username)) {
 									echo "<div class='text-danger small mt-1'>";
-									echo $erreurs_identifiant[0];
+									echo $erreurs_username[0];
 									echo "</div>";
 								}
 							?>
@@ -239,7 +172,7 @@ if (isset($_POST['login'])) {
 							<button type="submit" class="btn btn-primary" name="login">Se connecter</button>
 						</div>
 
-						<p class="text-center mt-4">Vous n'avez pas de compte ? <a href="account_creation.php">Créer un compte</a></p>
+						<p class="text-center mt-4">Vous n'avez pas de compte ? <a href="../view/pages/account_creation.php">Créer un compte</a></p>
 
 
 					</form>

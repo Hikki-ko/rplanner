@@ -140,7 +140,7 @@
 					>
 				</p>
 				<p class="lead">
-					Déjà membre ? <a href="./view/pages/login.php">Connectez-vous !</a>
+					Déjà membre ? <a href="./controller/login.php">Connectez-vous !</a>
 				</p>
 			</main>
 			<footer class="mt-auto text-white-50">
