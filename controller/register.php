@@ -19,9 +19,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $errors[] = "Erreur de sécurité (CSRF).";
     }
 
-    // Vérification du Captcha 
-    if ($captcha !== $_SESSION['captcha_code']) {
-        $errors[] = "Le code captcha est incorrect.";
+    // On récupère ce que l'utilisateur a tapé dans le formulaire
+    $user_input_captcha = $_POST['captcha'] ?? ''; 
+
+    // On compare avec ce qui a été stocké par le script de l'image
+    if ($user_input_captcha != $_SESSION['captcha']) {
+      $errors[] = "Le code captcha est incorrect.";
     }
 
     // Vérification des champs vides
