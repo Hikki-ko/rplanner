@@ -109,6 +109,8 @@
 			</ul>
 		</div>
 
+		<h2 class="text-start ps-3 pt-3">Rplanner</h2>
+
 		<div class="container-fluid vh-100">
 			<!-- Left -->
 			<div class="row d-flex justify-content-center align-items-center h-100">
