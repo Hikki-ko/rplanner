@@ -1,5 +1,5 @@
 <?php
-include_once("../model/inc.connexion.php");
+include_once("../model/inc.connection.php");
 include_once("../model/inc.character_edit.php");
 
 if (isset($_POST["add_character"])) {
