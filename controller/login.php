@@ -66,7 +66,7 @@ if (isset($_POST['login'])) {
         </div>
         ';
 
-        header("Refresh: 3; url=../view/pages/user_space.php");
+        header("Refresh: 3; url=../view/pages/dashboard.php");
       } else {
         $erreurs_connexion[] = "Le mot de passe est invalide";
       }
