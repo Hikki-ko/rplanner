@@ -111,7 +111,7 @@
 
 		<div class="container-fluid vh-100">
             <div class="row mb-5 text-start">
-                <h2 class="mb-5">Rplanner</h2>
+                <h2 class="mb-5 ps-3 pt-3"><a class="title-redirection" href="../../index.php">Rplanner</a></h2>
                 <h2>Bienvenue [Xpersonne] !</h2>
                 <h2 class="mb-4">sur votre compte Rplanner</h2>
                 <p>Nous sommes heureux de votre visite sur votre compte rplanner.
