@@ -55,7 +55,18 @@ if (isset($_POST['login'])) {
         $_SESSION['username'] = htmlspecialchars($username);
         // header("Location: ../index.php");
         // die;
-        echo "<h1 style = 'color : white'>Bonjour : " . htmlspecialchars($username) . "</h1>";
+        // echo "<h1 style = 'color : white'>Bonjour : " . htmlspecialchars($username) . "</h1>";
+
+        echo '
+        <div class="login_popup">
+            <div class="popup-box">
+                <h2 class="popup-title">Connexion réussi !</h2>
+                <p>Vous allez être redirigé dans 3 secondes...</p>
+            </div>
+        </div>
+        ';
+
+        header("Refresh: 3; url=../view/pages/user_space.php");
       } else {
         $erreurs_connexion[] = "Le mot de passe est invalide";
       }
