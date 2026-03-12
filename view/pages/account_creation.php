@@ -1,8 +1,12 @@
 <?php
 session_start();
-include_once("../../model/inc.connexion.php");
+include_once("../../model/inc.connection.php");
 
 $_SESSION['token'] = bin2hex(random_bytes(32));
+
+if(!empty($_SESSION['errors'])): ?>
+    <div class="alert alert-danger"><?= implode('<br>', $_SESSION['errors']); unset($_SESSION['errors']); ?></div>
+<?php endif;
 
 ?>
 
@@ -144,7 +148,7 @@ $_SESSION['token'] = bin2hex(random_bytes(32));
 								Mot de passe
 							</label>
 							<input 
-							type="text"
+							type="password"
 							class="form-control"
 							name="inputPassword"
 							minlength="8"
@@ -156,7 +160,7 @@ $_SESSION['token'] = bin2hex(random_bytes(32));
 								Confirmation du mot de passe
 							</label>
 							<input 
-							type="text"
+							type="password"
 							class="form-control"
 							name="confirmationPassword"
 							required>

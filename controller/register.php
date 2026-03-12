@@ -1,40 +1,39 @@
 <?php
-session_start(); 
+session_start();
+require_once __DIR__ . "/../model/inc.connection.php";
+require_once __DIR__ . "/../model/inc.register.php";
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    
-    // Récupération des données 
     $username = trim($_POST['inputUsername'] ?? '');
     $password = $_POST['inputPassword'] ?? '';
     $confirm  = $_POST['confirmationPassword'] ?? '';
     $email    = trim($_POST['inputEmail'] ?? '');
-    $captcha  = $_POST['captcha'] ?? '';
     $token    = $_POST['csrf_token'] ?? '';
+    $captcha  = $_POST['captcha'] ?? '';
 
-    // Initialisation d'un tableau d'erreurs
     $errors = [];
 
-    // Vérification du Token CSRF
-    if (empty($token) || $token !== $_SESSION['token']) {
-        $errors[] = "Erreur de sécurité (CSRF).";
+    // Validations
+    if ($token !== $_SESSION['token']) $errors[] = "Erreur de sécurité CSRF.";
+    if ($captcha !== ($_SESSION['captcha'] ?? '')) $errors[] = "Captcha incorrect.";
+    if (empty($username) || strlen($password) < 8) $errors[] = "Données invalides.";
+    if ($password !== $confirm) $errors[] = "Les mots de passe ne correspondent pas.";
+
+    if (empty($errors)) {
+        // APPEL AU MODELE
+        $result = createAccount($pdo, $username, $password, $email);
+        
+        if ($result === true) {
+            $_SESSION['success'] = "Compte créé ! Connectez-vous.";
+            header("Location: login.php");
+            exit;
+        } else {
+            $errors[] = $result;
+        }
     }
-
-    // On récupère ce que l'utilisateur a tapé dans le formulaire
-    $user_input_captcha = $_POST['captcha'] ?? ''; 
-
-    // On compare avec ce qui a été stocké par le script de l'image
-    if ($user_input_captcha != $_SESSION['captcha']) {
-      $errors[] = "Le code captcha est incorrect.";
-    }
-
-    // Vérification des champs vides
-    if (empty($username) || empty($password)) {
-        $errors[] = "L'identifiant et le mot de passe sont obligatoires.";
-    }
-
-    // Vérification de la correspondance des mots de passe
-    if ($password !== $confirm) {
-        $errors[] = "Les mots de passe ne correspondent pas.";
-    }
-
+    
+    // Si on arrive ici, il y a des erreurs
+    $_SESSION['errors'] = $errors;
+    header("Location: ../view/pages/account_creation.php"); // Retour au formulaire
+    exit;
 }
