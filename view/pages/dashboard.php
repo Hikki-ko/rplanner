@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Connexion</title>
+		<title>Espace utilisateur</title>
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
 			rel="stylesheet"
@@ -109,41 +109,44 @@
 			</ul>
 		</div>
 
-		<div class="container-fluid vh-100">
+		<div class="container-fluid ps-3">
             <div class="row mb-5 text-start">
-                <h2 class="mb-5 ps-3 pt-3"><a class="title-redirection" href="../../index.php">Rplanner</a></h2>
-                <h2>Bienvenue [Xpersonne] !</h2>
-                <h2 class="mb-4">sur votre compte Rplanner</h2>
-                <p>Nous sommes heureux de votre visite sur votre compte rplanner.
+                <h2 class="mb-5 pt-3 fw-bold"><a class="title-redirection" href="../../index.php">Rplanner</a></h2>
+                <h3 class="fw-bold mb-1">Bienvenue [Xpersonne] !</h2>
+                <h3 class="text-secondary fw-light mb-4">Sur votre compte Rplanner</h3>
+                <p class="lead text-white-50" >Nous sommes heureux de votre visite sur votre compte rplanner.
                    Découvrez toutes les fonctionnalités et les avantages !</p>
             </div>
-            <div class="row text-start">
-                <h3>Votre espace personnel</h3>
+            <div class="row text-start mt-5">
+                <h3 class="mb-4 fw-bold">Votre espace personnel</h3>
 
                 <div class="col-md-3">
-                    <div class="card h-100 cards-shadow">
-                        <div class="card-body">
-                            <img class="img-fluid w-25" src="../images/perso.png"/>
-                            <h5 class="card-title">Mes personnages</h5>
-                            <a href="#" class="btn btn-primary">Accéder aux fiches</a>
+                    <div class="card h-100 bg-dark text-white border-secondary rounded-4 cards-shadow">
+                        <div class="card-body text-center p-4">
+                            <img class="img-fluid w-25 mb-4 cards-img" src="../images/perso.png"/>
+                            <h5 class="card-title fw-bold">Mes personnages</h5>
+							<p class="card-text text-white-50 small mb-4">Consultez et modifiez les fiches de vos héros.</p>
+                            <a href="#" class="btn btn-outline-light rounded-pill px-4">Accéder</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card h-100 cards-shadow">
-                        <div class="card-body">
-                            <img class="img-fluid w-25" src="../images/create_perso.png"/>
-                            <h5 class="card-title">Nouveau personnage</h5>
-                            <a href="#" class="btn btn-primary">Ajouter un personnage</a>
+                    <div class="card h-100 bg-dark text-white border-secondary rounded-4 cards-shadow">
+                        <div class="card-body text-center p-4">
+                            <img class="img-fluid w-25 mb-4 cards-img" src="../images/create_perso.png"/>
+                            <h5 class="card-title fw-bold">Nouveau personnage</h5>
+							<p class="card-text text-white-50 small mb-4">Ajoutez un nouveau héros pour votre aventure.</p>
+                            <a href="character_creation.php" class="btn btn-outline-light rounded-pill px-4">Créer</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
-                    <div class="card h-100 cards-shadow">
-                        <div class="card-body">
-                            <img class="img-fluid w-25" src="../images/campain.png"/>
+                    <div class="card h-100  bg-dark text-white border-secondary rounded-4 cards-shadow">
+                        <div class="card-body text-center p-4">
+                            <img class="img-fluid w-25 mb-4 cards-img" src="../images/campain.png"/>
                             <h5 class="card-title">Mes campagnes</h5>
-                            <a href="#" class="btn btn-primary">Gérér les campagnes</a>
+							<p class="card-text text-white-50 small mb-4">Gérez vos campagnes et leurs avancées actuelles.</p>
+                            <a href="#" class="btn btn-outline-light rounded-pill">Gérér</a>
                         </div>
                     </div>
                 </div>
