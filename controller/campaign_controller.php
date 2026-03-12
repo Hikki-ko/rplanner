@@ -1,5 +1,5 @@
 <?php
-include_once("../model/inc.connexion.php");
+include_once("../model/inc.connection.php");
 include_once("../model/inc.item_management.php");
 include_once("../model/inc.character_list.php");
 
