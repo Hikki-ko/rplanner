@@ -1,3 +1,8 @@
+<?php 
+session_start();
+
+include_once('../../functions/check_login.php');
+?>
 <!doctype html>
 <html lang="fr">
 	<head>
@@ -112,7 +117,11 @@
 		<div class="container-fluid ps-3">
             <div class="row mb-5 text-start">
                 <h2 class="mb-5 pt-3 fw-bold"><a class="title-redirection" href="../../index.php">Rplanner</a></h2>
-                <h3 class="fw-bold mb-1">Bienvenue [Xpersonne] !</h2>
+				<?php 
+					if (isConnected()) {
+						echo '<h3 class="fw-bold mb-1 text-capitalize">Bienvenue ' .$_SESSION['username'].' !</h3>';
+					}
+				?>
                 <h3 class="text-secondary fw-light mb-4">Sur votre compte Rplanner</h3>
                 <p class="lead text-white-50" >Nous sommes heureux de votre visite sur votre compte rplanner.
                    Découvrez toutes les fonctionnalités et les avantages !</p>
@@ -146,7 +155,7 @@
                             <img class="img-fluid w-25 mb-4 cards-img" src="../images/campain.png"/>
                             <h5 class="card-title">Mes campagnes</h5>
 							<p class="card-text text-white-50 small mb-4">Gérez vos campagnes et leurs avancées actuelles.</p>
-                            <a href="#" class="btn btn-outline-light rounded-pill">Gérér</a>
+                            <a href="../../controller/campaign_controller.php" class="btn btn-outline-light rounded-pill">Gérér</a>
                         </div>
                     </div>
                 </div>
