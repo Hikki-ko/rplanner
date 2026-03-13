@@ -1,6 +1,6 @@
 <?php
 // Certaines fonctionnalités de cette page sont gérées en JavaScript (/view/js/character_create.js)
-function editCharacter($pdo) {
+function createCharacter($pdo) {
 	$is_good = true;
 	$errors = [];
 
@@ -138,8 +138,9 @@ function editCharacter($pdo) {
 	}
 	
 	if ($is_good) {
-		$connexion = $pdo->prepare("UPDATE `characters` SET first_name = :first_name, last_name = :last_name, age = :age, nationality = :nationality, pronouns = :pronouns, gender = :gender, sex = :sex, sexual_orientation = :sexual_orientation, occupation = :occupation, voice = :voice, voice_link = :voice_link, psychology = :psychology, hobbies = :hobbies, height = :height, weight = :weight, eye_color = :eye_color, hair_color = :hair_color, physical_description = :physical_description, health = :health, faceclaim = :faceclaim, image = :image, custom_fields = :custom_fields WHERE character_id = :character_id;");
+		$connexion = $pdo->prepare("INSERT INTO `characters` (`campaign_id`, `first_name`, `last_name`, `age`, `nationality`, `pronouns`, `gender`, `sex`, `sexual_orientation`, `occupation`, `voice`, `voice_link`, `psychology`, `hobbies`, `height`, `weight`, `eye_color`, `hair_color`, `physical_description`, `health`, `faceclaim`, `image`, `custom_fields`) VALUES (:campaign_id, :first_name, :last_name, :age, :nationality, :pronouns, :gender, :sex, :sexual_orientation, :occupation, :voice, :voice_link, :psychology, :hobbies, :height, :weight, :eye_color, :hair_color, :physical_description, :health, :faceclaim, :image, :custom_fields);");
 		$connexion->execute([
+		':campaign_id' => $_POST["campaign_id"],
 		':first_name' => $_POST["first_name"],
 		':last_name' => $_POST["last_name"],
 		':age' => $_POST["age"],
@@ -161,73 +162,12 @@ function editCharacter($pdo) {
 		':health' => $_POST["health"],
 		':faceclaim' => $_POST["faceclaim"],
 		':image' => $_POST["image"],
-		':custom_fields' => $custom_fields,
-		':character_id' => $_POST["character_id"]
+		':custom_fields' => $custom_fields
 		]);
 		header('Location: ./campaign_controller.php');
 		exit;
 	} else {
 		return $errors;
 	}
-}
-
-function getEditFields($pdo, $character_id, $errors) {
-	$connexion = $pdo->prepare("SELECT * FROM `characters` where character_id = :character_id;");
-	$connexion->execute([':character_id' => $character_id]);
-	$attributes = $connexion->fetch(PDO::FETCH_ASSOC);
-	if (isset($errors) && $errors) {
-		$errors = implode("<br>", $errors);
-	} else {
-		$errors = "";
-	}
-	if (!$attributes) {
-		echo '<p>Ce personnage n\'existe pas !</p>';
-	} else {
-		$customattributes = json_decode($attributes["custom_fields"]);
-		echo '
-			<input type="hidden" name="character_id" id="character_id" value="'.htmlspecialchars($character_id).'">
-			<input type="hidden" name="campaign_id" id="campaign_id" value="666">
-			<input type="text" name="first_name" id="first_name" placeholder="Prénom" value="'.htmlspecialchars($attributes["first_name"]).'">
-			<input type="text" name="last_name" id="last_name" placeholder="Nom" value="'.htmlspecialchars($attributes["last_name"]).'">
-			<input type="number" name="age" id="age" placeholder="Âge" value="'.htmlspecialchars($attributes["age"]).'">
-			<input type="text" name="nationality" id="nationality" placeholder="Nationalité" value="'.htmlspecialchars($attributes["nationality"]).'">
-			<input type="text" name="pronouns" id="pronouns" placeholder="Pronoms" value="'.htmlspecialchars($attributes["pronouns"]).'">
-			<input type="text" name="gender" id="gender" placeholder="Genre" value="'.htmlspecialchars($attributes["gender"]).'">
-			<input type="text" name="sex" id="sex" placeholder="Sexe" value="'.htmlspecialchars($attributes["sex"]).'">
-			<input type="text" name="sexual_orientation" id="sexual_orientation" placeholder="Orientation sexuelle" value="'.htmlspecialchars($attributes["sexual_orientation"]).'">
-			<input type="text" name="occupation" id="occupation" placeholder="Occupation" value="'.htmlspecialchars($attributes["occupation"]).'">
-			<input type="text" name="voice" id="voice" placeholder="Voix" value="'.htmlspecialchars($attributes["voice"]).'">
-			<input type="text" name="voice_link" id="voice_link" placeholder="Lien vers la voix" value="'.htmlspecialchars($attributes["voice_link"]).'">
-			<textarea name="psychology" id="psychology" placeholder="Psychologie">'.htmlspecialchars($attributes["psychology"]).'</textarea>
-			<textarea name="hobbies" id="hobbies" placeholder="Passions">'.htmlspecialchars($attributes["hobbies"]).'</textarea>
-			<input type="number" name="height" id="height" placeholder="Taille" value="'.htmlspecialchars($attributes["height"]).'">
-			<input type="number" name="weight" id="weight" placeholder="Poids" value="'.htmlspecialchars($attributes["weight"]).'">
-			<input type="text" name="eye_color" id="eye_color" placeholder="Couleur des yeux" value="'.htmlspecialchars($attributes["eye_color"]).'">
-			<input type="text" name="hair_color" id="hair_color" placeholder="Couleur des cheveux" value="'.htmlspecialchars($attributes["hair_color"]).'">
-			<textarea name="physical_description" id="physical_description" placeholder="Description physique">'.htmlspecialchars($attributes["physical_description"]).'</textarea>
-			<textarea name="health" id="health" placeholder="Santé">'.htmlspecialchars($attributes["health"]).'</textarea>
-			<input type="text" name="faceclaim" id="faceclaim" placeholder="Faceclaim" value="'.htmlspecialchars($attributes["faceclaim"]).'">
-			<input type="text" name="image" id="image" placeholder="Image" value="'.htmlspecialchars($attributes["image"]).'">
-			';
-			echo '<div id="custom_fields_container">';
-			if ($customattributes) {
-				foreach ($customattributes as $attribute => $value) {
-					echo '<input class="custom_field" data_name="'.htmlspecialchars($attribute).'" placeholder="'.htmlspecialchars($attribute).'" value="'.htmlspecialchars($value).'">';
-				}
-			}
-			echo '</div>';
-			echo '
-				<p>Créer un nouveau champ :</p>
-				<input type="text" id="new_field_name" placeholder="Nom du champ">
-				<button type="button" id="add_field">Ajouter le champ</button>
-				<br>
-				<br>'.
-				$errors
-				.'<br>
-				<br>
-				<button type="submit" name="edit_character">Modifier le personnage</button>
-				';
-	}
-	
 }
 ?>

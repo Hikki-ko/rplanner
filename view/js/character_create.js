@@ -1,5 +1,10 @@
 document.addEventListener("DOMContentLoaded", () => {
-	// Vérification formulaire d'ajout de personnage.
+	// Ajout de boutons de suppression sur les champs personnalisés pré-existants.
+	document.querySelectorAll(".custom_field").forEach((field) => {
+		createDeleteButton(field);
+	})
+	
+	// Vérification formulaire d'ajout de personnage (vérifie aussi l'édition de personnage).
 	const add_character_form = document.getElementById("add_character_form");
 	add_character_form.addEventListener("submit", (e) => {
 		
@@ -175,18 +180,26 @@ document.addEventListener("DOMContentLoaded", () => {
 		new_field.setAttribute("class", "custom_field");
 		new_field.setAttribute("data_name", name_input.value);
 		new_field.setAttribute("placeholder", name_input.value);
-		// Création du bouton de suppression d'input
+		// Insertion du champ si une valeur a été donnée
+		if (name_input.value.trim() !== "") {
+			custom_fields_div.appendChild(new_field);
+			// Ajout du bouton de suppression
+			createDeleteButton(new_field);
+		}
+		
+	});
+	
+	function createDeleteButton(field) {
+		// Création du bouton
 		let delete_button = document.createElement("button")
 		delete_button.setAttribute("type", "button");
 		delete_button.textContent = "Supprimer le champ";
-		// Insertion des deux éléments
-		custom_fields_div.appendChild(new_field);
-		custom_fields_div.appendChild(delete_button);
+		// Insertion du bouton à côté de l'élément choisi
+		field.insertAdjacentElement("afterend", delete_button)
 		// Ajout de la capacité de suppression au bouton de suppression, qui sera toujours le dernier élément ajoué au div des champs personnalisés.
-		custom_fields_div.lastChild.addEventListener("click", () => {
-			new_field.remove();
+		delete_button.addEventListener("click", () => {
+			field.remove();
 			delete_button.remove();
 		});
-	});
-	
+	}
 });
