@@ -135,7 +135,7 @@
 					photo to make it your own.
 				</p>
 				<p class="lead">
-					<a href="#" class="btn btn-lg btn-light fw-bold border-white bg-white"
+					<a href="./view/pages/account_creation.php" class="btn btn-lg btn-light fw-bold border-white bg-white"
 						>Commencer mon aventure</a
 					>
 				</p>
