@@ -120,7 +120,7 @@
 							href="#"
 							>Home</a
 						>
-						<a class="nav-link fw-bold py-1 px-0" href="#"
+						<a class="nav-link fw-bold py-1 px-0" href="./view/pages/character_creation.php"
 							>Créer mon personnage</a
 						>
 						<a class="nav-link fw-bold py-1 px-0" href="#">Tutoriel</a>
