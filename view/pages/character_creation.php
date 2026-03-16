@@ -1,3 +1,8 @@
+<?php 
+session_start();
+include_once('../inc/functions/check_login.php');
+?>
+
 <!DOCTYPE html>
 <html lang=fr>
 <head>
@@ -9,10 +14,10 @@
 			integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../view/css/style.css" />
 </head>
 
-<body class="d-flex h-100 text-center text-bg-dark">
+<body class="d-flex flex-column h-100 text-center text-bg-dark">
 	<noscript>
 		<p>Veuillez activer le JavaScript pour le bon fonctionnement de cette page.</p>
 	</noscript>
@@ -113,7 +118,14 @@
 			</ul>
 		</div>
 
-		<main class="container mt-5">
+		<div class="container-fluid ps-3 text-start">
+        <?php
+			if(isConnected()) {
+				include_once("../inc/inc_pages_header.php");
+			}
+        ?>
+    	</div>
+		<main class="container mt-2">
 			<form method="POST" id="add_character_form">
 				<div class="mb-3"></div>
 		<!-- Champ invisible temporaire jusqu'à l'ajout de la relation campagne-personnage -->
@@ -181,5 +193,10 @@
 			</form>
 		</main>
 	<script src="../view/js/character_create.js"></script>
+	<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+			crossorigin="anonymous"
+		></script>
 </body>
 </html>

@@ -1,6 +1,7 @@
 <?php 
 include_once('../inc/functions/check_login.php');
 ?>
+
 <!doctype html>
 <html lang="fr">
 	<head>
@@ -114,11 +115,12 @@ include_once('../inc/functions/check_login.php');
 
 		<div class="container-fluid ps-3">
             <div class="row mb-5 text-start">
-                <h2 class="mb-5 pt-3 fw-bold"><a class="title-redirection" href="../index.php">Rplanner</a></h2>
-				<?php 
-					if (isConnected()) {
+				<?php
+					if(isConnected()) {
+						include_once("../inc/inc_pages_header.php");
 						echo '<h3 class="fw-bold mb-1 text-capitalize">Bienvenue ' .$_SESSION['username'].' !</h3>';
 					}
+					
 				?>
                 <h3 class="text-secondary fw-light mb-4">Sur votre compte Rplanner</h3>
                 <p class="lead text-white-50" >Nous sommes heureux de votre visite sur votre compte rplanner.

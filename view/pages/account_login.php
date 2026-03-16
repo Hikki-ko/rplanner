@@ -109,7 +109,7 @@
 			</ul>
 		</div>
 
-		<h2 class="text-start ps-3 pt-3"><a class="title-redirection" href="../index.php">Rplanner</a></h2>
+		<h2 class="text-start ps-3 pt-3 fw-bold"><a class="title-redirection" href="../index.php">Rplanner</a></h2>
 
 		<div class="container-fluid vh-100">
 			<!-- Left -->
