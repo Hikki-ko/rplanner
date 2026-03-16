@@ -135,14 +135,15 @@
 						<div class="fw-bold text-white d-inline-block connexion-info">
 							<?php 
 								if(isConnected()){
-									// echo '<div class="dropdown d-flex align-items-center gap-3">';
-									echo '<button class="btn btn-outline-light rounded-pill px-4 dropdown-toggle text-capitalize" type="button" data-bs-toggle="dropdown" aria-expanded="false">Bonjour ' . htmlspecialchars($_SESSION['username']) . ' !</button>';
-									echo '<ul class="dropdown-menu dropdown-menu-dark rounded-3">';
-										echo '<li><a class="dropdown-item py-2" href="view/pages/dashboard.php">Mon espace</a></li>';
-										echo '<li><hr class="dropdown-divider"></li>';
-										echo '<li><a class="dropdown-item text-danger fw-bold py-2" href="view/pages/logout.php">Déconnexion</a></li>';
-									echo '</ul>';
-									// echo '</div>';
+									echo '<div class="dropdown d-flex align-items-center gap-3">';
+									echo '
+									<button class="btn btn-outline-light rounded-pill px-4 dropdown-toggle text-capitalize" type="button" data-bs-toggle="dropdown" aria-expanded="false">Bonjour ' . htmlspecialchars($_SESSION['username']) . ' !</button>
+									<ul class="dropdown-menu dropdown-menu-dark rounded-3">
+										<li><a class="dropdown-item py-2" href="controller/dashboard_controller.php">Mon espace</a></li>
+										<li><hr class="dropdown-divider"></li>
+										<li><a class="dropdown-item text-danger fw-bold py-2" href="view/pages/logout.php">Déconnexion</a></li>
+									</ul>';
+									echo '</div>';
 								}
 							?>
 						</div>

@@ -1,7 +1,5 @@
 <?php 
-session_start();
-
-include_once('../../inc/functions/check_login.php');
+include_once('../inc/functions/check_login.php');
 ?>
 <!doctype html>
 <html lang="fr">
@@ -15,7 +13,7 @@ include_once('../../inc/functions/check_login.php');
 			integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="../view/css/style.css" />
 	</head>
 	<body class="d-flex h-100 text-center text-bg-dark">
 		<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -116,7 +114,7 @@ include_once('../../inc/functions/check_login.php');
 
 		<div class="container-fluid ps-3">
             <div class="row mb-5 text-start">
-                <h2 class="mb-5 pt-3 fw-bold"><a class="title-redirection" href="../../index.php">Rplanner</a></h2>
+                <h2 class="mb-5 pt-3 fw-bold"><a class="title-redirection" href="../index.php">Rplanner</a></h2>
 				<?php 
 					if (isConnected()) {
 						echo '<h3 class="fw-bold mb-1 text-capitalize">Bienvenue ' .$_SESSION['username'].' !</h3>';
@@ -132,7 +130,7 @@ include_once('../../inc/functions/check_login.php');
                 <div class="col-md-3">
                     <div class="card h-100 bg-dark text-white border-secondary rounded-4 cards-shadow">
                         <div class="card-body text-center p-4">
-                            <img class="img-fluid w-25 mb-4 cards-img" src="../images/perso.png"/>
+                            <img class="img-fluid w-25 mb-4 cards-img" src="../view/images/perso.png"/>
                             <h5 class="card-title fw-bold">Mes personnages</h5>
 							<p class="card-text text-white-50 small mb-4">Consultez et modifiez les fiches de vos héros.</p>
                             <a href="#" class="btn btn-outline-light rounded-pill px-4">Accéder</a>
@@ -142,20 +140,20 @@ include_once('../../inc/functions/check_login.php');
                 <div class="col-md-3">
                     <div class="card h-100 bg-dark text-white border-secondary rounded-4 cards-shadow">
                         <div class="card-body text-center p-4">
-                            <img class="img-fluid w-25 mb-4 cards-img" src="../images/create_perso.png"/>
+                            <img class="img-fluid w-25 mb-4 cards-img" src="../view/images/create_perso.png"/>
                             <h5 class="card-title fw-bold">Nouveau personnage</h5>
 							<p class="card-text text-white-50 small mb-4">Ajoutez un nouveau héros pour votre aventure.</p>
-                            <a href="../../controller/character_controller.php" class="btn btn-outline-light rounded-pill px-4">Créer</a>
+                            <a href="../controller/character_controller.php" class="btn btn-outline-light rounded-pill px-4">Créer</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-3">
                     <div class="card h-100  bg-dark text-white border-secondary rounded-4 cards-shadow">
                         <div class="card-body text-center p-4">
-                            <img class="img-fluid w-25 mb-4 cards-img" src="../images/campain.png"/>
+                            <img class="img-fluid w-25 mb-4 cards-img" src="../view/images/campain.png"/>
                             <h5 class="card-title">Mes campagnes</h5>
 							<p class="card-text text-white-50 small mb-4">Gérez vos campagnes et leurs avancées actuelles.</p>
-                            <a href="../../controller/campaign_controller.php" class="btn btn-outline-light rounded-pill">Gérér</a>
+                            <a href="../controller/campaign_controller.php" class="btn btn-outline-light rounded-pill">Gérér</a>
                         </div>
                     </div>
                 </div>

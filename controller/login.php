@@ -66,7 +66,7 @@ if (isset($_POST['login'])) {
         // </div>
         // ';
 
-        header("Location: ../view/pages/dashboard.php");
+        header("Location: ../controller/dashboard_controller.php");
       } else {
         $erreurs_connexion[] = "Le mot de passe est invalide";
       }
