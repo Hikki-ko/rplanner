@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-include_once('../../functions/check_login.php');
+include_once('../../inc/functions/check_login.php');
 ?>
 <!doctype html>
 <html lang="fr">
@@ -145,7 +145,7 @@ include_once('../../functions/check_login.php');
                             <img class="img-fluid w-25 mb-4 cards-img" src="../images/create_perso.png"/>
                             <h5 class="card-title fw-bold">Nouveau personnage</h5>
 							<p class="card-text text-white-50 small mb-4">Ajoutez un nouveau héros pour votre aventure.</p>
-                            <a href="character_creation.php" class="btn btn-outline-light rounded-pill px-4">Créer</a>
+                            <a href="../../controller/character_controller.php" class="btn btn-outline-light rounded-pill px-4">Créer</a>
                         </div>
                     </div>
                 </div>

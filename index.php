@@ -1,3 +1,9 @@
+<?php 
+
+	session_start();
+	include_once('inc/functions/check_login.php');
+
+?>
 <!doctype html>
 <html lang="en">
 	<head>
@@ -111,20 +117,37 @@
 		</div>
 		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 			<header class="mb-auto">
-				<div>
-					<h3 class="float-md-start mb-0">Cover</h3>
-					<nav class="nav nav-masthead justify-content-center float-md-end">
-						<a
-							class="nav-link fw-bold py-1 px-0 active"
-							aria-current="page"
-							href="#"
-							>Home</a
-						>
-						<a class="nav-link fw-bold py-1 px-0" href="./view/pages/character_creation.php"
-							>Créer mon personnage</a
-						>
-						<a class="nav-link fw-bold py-1 px-0" href="#">Tutoriel</a>
-					</nav>
+				<div class="row align-items-center m-0">
+					
+					<div class="col-4 text-start p-0">
+						<h3 class="mb-0">Cover</h3>
+					</div>
+					
+					<div class="col-4 d-flex justify-content-center p-0">
+						<nav class="nav nav-masthead">
+							<a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
+							<a class="nav-link fw-bold py-1 px-0 ms-3" href="./view/pages/character_creation.php">Créer mon personnage</a>
+							<a class="nav-link fw-bold py-1 px-0 ms-3" href="#">Tutoriel</a>
+						</nav>
+					</div>
+
+					<div class="col-4 text-end p-0">
+						<div class="fw-bold text-white d-inline-block connexion-info">
+							<?php 
+								if(isConnected()){
+									// echo '<div class="dropdown d-flex align-items-center gap-3">';
+									echo '<button class="btn btn-outline-light rounded-pill px-4 dropdown-toggle text-capitalize" type="button" data-bs-toggle="dropdown" aria-expanded="false">Bonjour ' . htmlspecialchars($_SESSION['username']) . ' !</button>';
+									echo '<ul class="dropdown-menu dropdown-menu-dark rounded-3">';
+										echo '<li><a class="dropdown-item py-2" href="view/pages/dashboard.php">Mon espace</a></li>';
+										echo '<li><hr class="dropdown-divider"></li>';
+										echo '<li><a class="dropdown-item text-danger fw-bold py-2" href="view/pages/logout.php">Déconnexion</a></li>';
+									echo '</ul>';
+									// echo '</div>';
+								}
+							?>
+						</div>
+					</div>
+					
 				</div>
 			</header>
 			<main class="px-3">
