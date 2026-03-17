@@ -6,21 +6,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const container = document.getElementById('custom_fields_container');
     const inputName = document.getElementById('new_field_name');
 
-    // 1. Afficher le petit formulaire
+    // Afficher le petit formulaire
     btnShow.addEventListener('click', () => {
         wrapper.classList.remove('d-none');
         btnShow.classList.add('d-none');
         inputName.focus();
     });
 
-    // 2. Annuler
+    // Annuler
     btnCancel.addEventListener('click', () => {
         wrapper.classList.add('d-none');
         btnShow.classList.remove('d-none');
         inputName.value = '';
     });
 
-    // 3. Créer le champ
+    // Créer le champ
     btnConfirm.addEventListener('click', () => {
         const fieldName = inputName.value.trim();
         
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const newCol = document.createElement('div');
             newCol.className = 'col-md-6';
             
-            // On génère un ID unique basé sur le nom
+            // Génère un ID unique basé sur le nom
             const safeId = fieldName.toLowerCase().replace(/\s+/g, '_');
 
             newCol.innerHTML = `
