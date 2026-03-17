@@ -126,7 +126,7 @@
 					<div class="col-4 d-flex justify-content-center p-0">
 						<nav class="nav nav-masthead">
 							<a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
-							<a class="nav-link fw-bold py-1 px-0 ms-3" href="./view/pages/character_creation.php">Créer mon personnage</a>
+							<a class="nav-link fw-bold py-1 px-0 ms-3" href="./controller/character_controller.php">Créer mon personnage</a>
 							<a class="nav-link fw-bold py-1 px-0 ms-3" href="#">Tutoriel</a>
 						</nav>
 					</div>
