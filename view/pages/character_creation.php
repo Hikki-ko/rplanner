@@ -122,77 +122,104 @@ include_once('../inc/functions/check_login.php');
         <?php
 			if(isConnected()) {
 				include_once("../inc/inc_pages_header.php");
+			}else{
+				echo "<div class=\"col-4 d-flex justify-content-center p-0\">
+						<nav class=\"nav nav-masthead\">
+							<a class=\"nav-link fw-bold py-1 px-0 active\" aria-current=\"page\" href=\"../index.php\">Retourner à l'acceuil</a>
+							<a class=\"nav-link fw-bold py-1 px-0 ms-3\" href=\"#_\">Tutoriel</a>
+						</nav>
+					</div>";
 			}
         ?>
     	</div>
-		<main class="container mt-2">
-			<form method="POST" id="add_character_form">
-				<div class="mb-3"></div>
-		<!-- Champ invisible temporaire jusqu'à l'ajout de la relation campagne-personnage -->
-		 <input 
-			type="hidden" 
-			class="form-control"
-			name="campaign_id" 
-			id="campaign_id" 
-			value="666">
+		<main class="container mt-4">
+    <form method="POST" id="add_character_form" class="bg-dark text-white p-4 rounded shadow">
+        <h2 class="mb-4">Créer un personnage</h2>
 
-		<input 
-			type="text"
-			class="form-control" 
-			name="first_name" 
-			id="first_name" 
-			placeholder="Prénom">
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <label class="form-label">Prénom</label>
+                <input type="text" class="form-control" name="first_name" placeholder="Ex: Jean">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Nom</label>
+                <input type="text" class="form-control" name="last_name" placeholder="Ex: Dupont">
+            </div>
+            <div class="col-md-4">
+                <label class="form-label">Âge</label>
+                <input type="number" class="form-control" name="age" placeholder="0">
+            </div>
+            <div class="col-md-8">
+                <label class="form-label">Nationalité</label>
+                <input type="text" class="form-control" name="nationality" placeholder="Française">
+            </div>
+        </div>
 
-		<input 
-			type="text"
-			class="form-control" 
-			name="last_name" 
-			id="last_name" 
-			placeholder="Nom">
+        <hr>
 
-		<input 
-			type="number"
-			class="form-control" 
-			name="age" id="age" 
-			placeholder="Âge">
-			
-		<input 
-			type="text"
-			class="form-control" 
-			name="nationality" 
-			id="nationality" 
-			placeholder="Nationalité">
+        <div class="row g-3 mb-4">
+            <div class="col-md-3"><input type="text" class="form-control" name="pronouns" placeholder="Pronoms"></div>
+            <div class="col-md-3"><input type="text" class="form-control" name="gender" placeholder="Genre"></div>
+            <div class="col-md-3"><input type="text" class="form-control" name="sex" placeholder="Sexe"></div>
+            <div class="col-md-3"><input type="text" class="form-control" name="sexual_orientation" placeholder="Orientation"></div>
+        </div>
 
-		<input type="text" name="pronouns" id="pronouns" placeholder="Pronoms">
-		<input type="text" name="gender" id="gender" placeholder="Genre">
-		<input type="text" name="sex" id="sex" placeholder="Sexe">
-		<input type="text" name="sexual_orientation" id="sexual_orientation" placeholder="Orientation sexuelle">
-		<input type="text" name="occupation" id="occupation" placeholder="Occupation">
-		<input type="text" name="voice" id="voice" placeholder="Voix">
-		<input type="text" name="voice_link" id="voice_link" placeholder="Lien vers la voix">
-		<textarea name="psychology" id="psychology" placeholder="Psychologie"></textarea>
-		<textarea name="hobbies" id="hobbies" placeholder="Passions"></textarea>
-		<input type="number" name="height" id="height" placeholder="Taille">
-		<input type="number" name="weight" id="weight" placeholder="Poids">
-		<input type="text" name="eye_color" id="eye_color" placeholder="Couleur des yeux">
-		<input type="text" name="hair_color" id="hair_color" placeholder="Couleur des cheveux">
-		<textarea name="physical_description" id="physical_description" placeholder="Description physique"></textarea>
-		<textarea name="health" id="health" placeholder="Santé"></textarea>
-		<input type="text" name="faceclaim" id="faceclaim" placeholder="Faceclaim">
-		<input type="text" name="image" id="image" placeholder="Image">
-		<div id="custom_fields_container"></div>
-		<p>Créer un nouveau champ :</p>
-		<input type="text" id="new_field_name" placeholder="Nom du champ">
-		<button type="button" id="add_field">Ajouter le champ</button>
-		<br>
-		<br>
-		<?php if (isset($errors) && $errors) {echo implode("<br>", $errors);} ?>
-		<br>
-		<br>
-		<button type="submit" name="add_character">Ajouter le personnage</button>
-			</form>
-		</main>
+        <div class="row g-3 mb-4">
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-text">Taille</span>
+                    <input type="number" class="form-control" name="height">
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="input-group">
+                    <span class="input-group-text">Poids</span>
+                    <input type="number" class="form-control" name="weight">
+                </div>
+            </div>
+            <div class="col-md-3"><input type="text" class="form-control" name="eye_color" placeholder="Yeux"></div>
+            <div class="col-md-3"><input type="text" class="form-control" name="hair_color" placeholder="Cheveux"></div>
+        </div>
+
+        <div class="row g-3 mb-4">
+            <div class="col-md-6">
+                <label class="form-label">Psychologie</label>
+                <textarea class="form-control" name="psychology" rows="3"></textarea>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Passions</label>
+                <textarea class="form-control" name="hobbies" rows="3"></textarea>
+            </div>
+        </div>
+
+		<div id="custom_fields_container" class="row g-3 mb-3">
+    </div>
+
+<div class="mb-4">
+    <button type="button" class="btn btn-link btn-sm text-decoration-none p-0" id="show_add_field">
+        <i class="bi bi-plus-circle"></i> + Ajouter un critère personnalisé (ex: Signe astro, Religion...)
+    </button>
+</div>
+
+<div id="add_field_wrapper" class="p-3 border rounded bg-light text-dark mb-4 d-none">
+    <div class="row g-2 align-items-center">
+        <div class="col">
+            <input type="text" id="new_field_name" class="form-control form-control-sm" placeholder="Nom du champ...">
+        </div>
+        <div class="col-auto">
+            <button type="button" id="confirm_add_field" class="btn btn-primary btn-sm">Ajouter</button>
+            <button type="button" id="cancel_add_field" class="btn btn-outline-secondary btn-sm">Annuler</button>
+        </div>
+    </div>
+</div>
+
+        <div class="mt-5 d-grid gap-2">
+            <button type="submit" name="add_character" class="btn btn-primary btn-lg">Ajouter le personnage</button>
+        </div>
+    </form>
+</main>
 	<script src="../view/js/character_create.js"></script>
+	<script src="../view/js/custom_form.js"></script>
 	<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
