@@ -1,7 +1,10 @@
 <?php
+session_start();
 include_once("../model/inc.connection.php");
 include_once("../model/inc.character_create.php");
 include_once("../model/inc.character_edit.php");
+include_once("../inc/functions/hasPerms.php");
+include_once('../inc/functions/check_login.php');
 $errors = null;
 
 if (isset($_POST["add_character"])) {
@@ -15,7 +18,7 @@ if (isset($_POST["edit_character"])) {
 }
 
 // Specifier l'ID d'un personnage renvoie à l'édition de ce personnage. Ne pas spécifier renvoie à la création de personnage.
-if (isset($_GET["character_id"]) && trim($_GET["character_id"]) !== "") {
+if (isset($_GET["character_id"]) && trim($_GET["character_id"]) !== "" && hasPerms($pdo, "character", $_GET["character_id"])) {
 	include_once("../view/pages/character_edition.php");
 } else {
 	include_once("../view/pages/character_creation.php");

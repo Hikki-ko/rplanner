@@ -138,9 +138,10 @@ function createCharacter($pdo) {
 	}
 	
 	if ($is_good) {
-		$connexion = $pdo->prepare("INSERT INTO `characters` (`campaign_id`, `first_name`, `last_name`, `age`, `nationality`, `pronouns`, `gender`, `sex`, `sexual_orientation`, `occupation`, `voice`, `voice_link`, `psychology`, `hobbies`, `height`, `weight`, `eye_color`, `hair_color`, `physical_description`, `health`, `faceclaim`, `image`, `custom_fields`) VALUES (:campaign_id, :first_name, :last_name, :age, :nationality, :pronouns, :gender, :sex, :sexual_orientation, :occupation, :voice, :voice_link, :psychology, :hobbies, :height, :weight, :eye_color, :hair_color, :physical_description, :health, :faceclaim, :image, :custom_fields);");
+		$connexion = $pdo->prepare("INSERT INTO `characters` (`campaign_id`, `user_id`, `first_name`, `last_name`, `age`, `nationality`, `pronouns`, `gender`, `sex`, `sexual_orientation`, `occupation`, `voice`, `voice_link`, `psychology`, `hobbies`, `height`, `weight`, `eye_color`, `hair_color`, `physical_description`, `health`, `faceclaim`, `image`, `custom_fields`) VALUES (:campaign_id, :user_id, :first_name, :last_name, :age, :nationality, :pronouns, :gender, :sex, :sexual_orientation, :occupation, :voice, :voice_link, :psychology, :hobbies, :height, :weight, :eye_color, :hair_color, :physical_description, :health, :faceclaim, :image, :custom_fields);");
 		$connexion->execute([
 		':campaign_id' => $_POST["campaign_id"],
+		':user_id' => $_SESSION["user_id"],
 		':first_name' => $_POST["first_name"],
 		':last_name' => $_POST["last_name"],
 		':age' => $_POST["age"],
