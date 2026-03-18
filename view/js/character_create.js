@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 	
 	// Bouton "ajouter un champ".
-	const field_button = document.getElementById("add_field");
+	const field_button = document.getElementById("confirm_add_field");
 	field_button.addEventListener("click", () => {
 		let custom_fields_div = document.getElementById("custom_fields_container");
 		// Récupération du nom entré

@@ -9,5 +9,4 @@
 
         return $connexion->fetch(PDO::FETCH_ASSOC);
     }
-
 ?>

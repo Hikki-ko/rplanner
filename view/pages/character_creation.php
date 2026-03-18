@@ -1,8 +1,3 @@
-<?php 
-session_start();
-include_once('../inc/functions/check_login.php');
-?>
-
 <!DOCTYPE html>
 <html lang=fr>
 <head>
@@ -135,60 +130,106 @@ include_once('../inc/functions/check_login.php');
 		<main class="container mt-4">
     <form method="POST" id="add_character_form" class="bg-dark text-white p-4 rounded shadow">
         <h2 class="mb-4">Créer un personnage</h2>
+		<!-- Champ invisible temporaire jusqu'à l'ajout de la relation campagne-personnage -->
+
+         <input
+
+            type="hidden"
+
+            class="form-control"
+
+            name="campaign_id"
+
+            id="campaign_id"
+
+            value="666"> 
 
         <div class="row g-3 mb-4">
             <div class="col-md-6">
                 <label class="form-label">Prénom</label>
-                <input type="text" class="form-control" name="first_name" placeholder="Ex: Jean">
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Ex: Jean">
             </div>
             <div class="col-md-6">
                 <label class="form-label">Nom</label>
-                <input type="text" class="form-control" name="last_name" placeholder="Ex: Dupont">
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Ex: Dupont">
             </div>
             <div class="col-md-4">
                 <label class="form-label">Âge</label>
-                <input type="number" class="form-control" name="age" placeholder="0">
+                <input type="number" class="form-control" id="age" name="age" placeholder="0">
             </div>
             <div class="col-md-8">
                 <label class="form-label">Nationalité</label>
-                <input type="text" class="form-control" name="nationality" placeholder="Française">
+                <input type="text" class="form-control" id="nationality" name="nationality" placeholder="Française">
+            </div>
+			<div class="mb-3">
+                <label class="form-label">Profession</label>
+                <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Etudiant, cadre, etc...">
             </div>
         </div>
 
         <hr>
 
         <div class="row g-3 mb-4">
-            <div class="col-md-3"><input type="text" class="form-control" name="pronouns" placeholder="Pronoms"></div>
-            <div class="col-md-3"><input type="text" class="form-control" name="gender" placeholder="Genre"></div>
-            <div class="col-md-3"><input type="text" class="form-control" name="sex" placeholder="Sexe"></div>
-            <div class="col-md-3"><input type="text" class="form-control" name="sexual_orientation" placeholder="Orientation"></div>
+            <div class="col-md-3"><input type="text" class="form-control" id="pronouns" name="pronouns" placeholder="Pronoms"></div>
+            <div class="col-md-3"><input type="text" class="form-control" id="gender" name="gender" placeholder="Genre"></div>
+            <div class="col-md-3"><input type="text" class="form-control" id="sex" name="sex" placeholder="Sexe"></div>
+            <div class="col-md-3"><input type="text" class="form-control" id="sexual_orientation" name="sexual_orientation" placeholder="Orientation"></div>
         </div>
 
         <div class="row g-3 mb-4">
             <div class="col-md-3">
                 <div class="input-group">
                     <span class="input-group-text">Taille</span>
-                    <input type="number" class="form-control" name="height">
+                    <input type="number" class="form-control" id="height" name="height">
                 </div>
             </div>
             <div class="col-md-3">
                 <div class="input-group">
                     <span class="input-group-text">Poids</span>
-                    <input type="number" class="form-control" name="weight">
+                    <input type="number" class="form-control" id="weight" name="weight">
                 </div>
             </div>
-            <div class="col-md-3"><input type="text" class="form-control" name="eye_color" placeholder="Yeux"></div>
-            <div class="col-md-3"><input type="text" class="form-control" name="hair_color" placeholder="Cheveux"></div>
+            <div class="col-md-3"><input type="text" class="form-control" id="eye_color" name="eye_color" placeholder="Yeux"></div>
+            <div class="col-md-3"><input type="text" class="form-control" id="hair_color" name="hair_color" placeholder="Cheveux"></div>
         </div>
 
         <div class="row g-3 mb-4">
             <div class="col-md-6">
                 <label class="form-label">Psychologie</label>
-                <textarea class="form-control" name="psychology" rows="3"></textarea>
+                <textarea class="form-control" id="psychology" name="psychology" rows="3"></textarea>
             </div>
             <div class="col-md-6">
                 <label class="form-label">Passions</label>
-                <textarea class="form-control" name="hobbies" rows="3"></textarea>
+                <textarea class="form-control" id="hobbies" name="hobbies" rows="3"></textarea>
+            </div>
+        </div>
+
+		<hr>
+
+		<div class="row g-3 mb-4">
+			<div class="col-md-6">
+                <label class="form-label">Avatar</label>
+                <input type="text" class="form-control" id="faceclaim" name="faceclaim" placeholder="Son faceclaim">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Lien vers le faceclaim</label>
+                <input type="text" class="form-control" id="image" name="image" placeholder="Lien ici">
+            </div>
+			<div class="col-md-6">
+                <label class="form-label">Voix</label>
+                <input type="text" class="form-control" id="voice" name="voice" placeholder="Sa voix">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Lien vers la voix</label>
+                <input type="text" class="form-control" id="voice_link" name="voice_link" placeholder="Lien ici">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Physique</label>
+                <textarea class="form-control" id="physical_description" name="physical_description" rows="3"></textarea>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Santé</label>
+                <textarea class="form-control" id="health" name="health" rows="3"></textarea>
             </div>
         </div>
 
@@ -215,6 +256,7 @@ include_once('../inc/functions/check_login.php');
 
         <div class="mt-5 d-grid gap-2">
             <button type="submit" name="add_character" class="btn btn-primary btn-lg">Ajouter le personnage</button>
+			<?php if (isset($errors) && $errors) {echo implode("<br>", $errors);} ?> 
         </div>
     </form>
 </main>

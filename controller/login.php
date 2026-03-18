@@ -53,6 +53,8 @@ if (isset($_POST['login'])) {
     } else {
       if (password_verify($password, $username_bdd['password'])) {
         $_SESSION['username'] = htmlspecialchars($username);
+		$_SESSION['user_id'] = htmlspecialchars($username_bdd["user_id"]);
+		$_SESSION['is_admin'] = htmlspecialchars($username_bdd["is_admin"]);
         // header("Location: ../index.php");
         // die;
         // echo "<h1 style = 'color : white'>Bonjour : " . htmlspecialchars($username) . "</h1>";

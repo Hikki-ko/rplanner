@@ -118,7 +118,7 @@ include_once('../inc/functions/check_login.php');
 				<?php
 					if(isConnected()) {
 						include_once("../inc/inc_pages_header.php");
-						echo '<h3 class="fw-bold mb-1 text-capitalize">Bienvenue ' .$_SESSION['username'].' !</h3>';
+						echo '<h3 class="fw-bold mb-1 text-capitalize">Bienvenue ' .$_SESSION['username'].$_SESSION['user_id'].' !</h3>';
 					}
 					
 				?>
