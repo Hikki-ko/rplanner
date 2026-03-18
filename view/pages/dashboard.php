@@ -118,7 +118,7 @@ include_once('../inc/functions/check_login.php');
 				<?php
 					if(isConnected()) {
 						include_once("../inc/inc_pages_header.php");
-						echo '<h3 class="fw-bold mb-1 text-capitalize">Bienvenue ' .$_SESSION['username'].$_SESSION['user_id'].' !</h3>';
+						echo '<h3 class="fw-bold mb-1 text-capitalize">Bienvenue ' .$_SESSION['username'].' !</h3>';
 					}
 					
 				?>
@@ -135,7 +135,7 @@ include_once('../inc/functions/check_login.php');
                             <img class="img-fluid w-25 mb-4 cards-img" src="../view/images/perso.png"/>
                             <h5 class="card-title fw-bold">Mes personnages</h5>
 							<p class="card-text text-white-50 small mb-4">Consultez et modifiez les fiches de vos héros.</p>
-                            <a href="#" class="btn btn-outline-light rounded-pill px-4">Accéder</a>
+                            <a href="../controller/character_list_controller.php" class="btn btn-outline-light rounded-pill px-4">Accéder</a>
                         </div>
                     </div>
                 </div>
