@@ -153,6 +153,10 @@ include_once('../inc/functions/check_login.php');
                 <label class="form-label">Nationalité</label>
                 <input type="text" class="form-control" id="nationality" name="nationality" placeholder="Française">
             </div>
+			<div class="mb-3">
+                <label class="form-label">Profession</label>
+                <input type="text" class="form-control" id="occupation" name="occupation" placeholder="Etudiant, cadre, etc...">
+            </div>
         </div>
 
         <hr>
@@ -189,6 +193,35 @@ include_once('../inc/functions/check_login.php');
             <div class="col-md-6">
                 <label class="form-label">Passions</label>
                 <textarea class="form-control" id="hobbies" name="hobbies" rows="3"></textarea>
+            </div>
+        </div>
+
+		<hr>
+
+		<div class="row g-3 mb-4">
+			<div class="col-md-6">
+                <label class="form-label">Avatar</label>
+                <input type="text" class="form-control" id="faceclaim" name="faceclaim" placeholder="Son faceclaim">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Lien vers le faceclaim</label>
+                <input type="text" class="form-control" id="image" name="image" placeholder="Lien ici">
+            </div>
+			<div class="col-md-6">
+                <label class="form-label">Voix</label>
+                <input type="text" class="form-control" id="voice" name="voice" placeholder="Sa voix">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Lien vers la voix</label>
+                <input type="text" class="form-control" id="voice_link" name="voice_link" placeholder="Lien ici">
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Physique</label>
+                <textarea class="form-control" id="physical_description" name="physical_description" rows="3"></textarea>
+            </div>
+            <div class="col-md-6">
+                <label class="form-label">Santé</label>
+                <textarea class="form-control" id="health" name="health" rows="3"></textarea>
             </div>
         </div>
 
