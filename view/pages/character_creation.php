@@ -135,6 +135,19 @@ include_once('../inc/functions/check_login.php');
 		<main class="container mt-4">
     <form method="POST" id="add_character_form" class="bg-dark text-white p-4 rounded shadow">
         <h2 class="mb-4">Créer un personnage</h2>
+		<!-- Champ invisible temporaire jusqu'à l'ajout de la relation campagne-personnage -->
+
+         <input
+
+            type="hidden"
+
+            class="form-control"
+
+            name="campaign_id"
+
+            id="campaign_id"
+
+            value="666"> 
 
         <div class="row g-3 mb-4">
             <div class="col-md-6">
