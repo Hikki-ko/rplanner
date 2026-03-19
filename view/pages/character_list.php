@@ -1,5 +1,4 @@
 <?php 
-session_start();
 include_once('../inc/functions/check_login.php');
 ?>
 
@@ -219,6 +218,24 @@ include_once('../inc/functions/check_login.php');
             </div>
 			
 		</div>
+
+	<!-- Message d'erreur pour l'édition des personnages -->
+
+	<div id="customOverlayPerms" class="alert-overlay">
+		<div class="alert-box">
+			<h3>Attention !</h3>
+			<p id="customAlertMessagePerms">Vous n'avez pas la permission de modifier ce personnage !</p>
+			<button type="button" id="closeAlertPerms">OK</button>
+		</div>
+	</div>
+
+	<div id="customOverlayArguments" class="alert-overlay">
+		<div class="alert-box">
+			<h3>Attention !</h3>
+			<p id="customAlertMessageArguments">Ce personnage n'existe pas !</p>
+			<button type="button" id="closeAlertArguments">OK</button>
+		</div>
+	</div>
 		
 	<script src="../view/js/character_create.js"></script>
 	<script
@@ -226,5 +243,24 @@ include_once('../inc/functions/check_login.php');
 			integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
 			crossorigin="anonymous"
 		></script>
+		<script src="../view/js/character_edit_error.js"></script>
+
+		<?php
+    if (isset($typeAlerte)) {
+        if ($typeAlerte === "perms") {
+            echo '<script>
+                    window.addEventListener("load", function() {
+                        customAlertPerms();
+                    });
+                  </script>';
+        } elseif ($typeAlerte === "arguments") {
+            echo '<script>
+                    window.addEventListener("load", function() {
+                        customAlertArguments();
+                    });
+                  </script>';
+        }
+    }
+    ?>
 </body>
 </html>

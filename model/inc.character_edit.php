@@ -181,7 +181,9 @@ function getEditFields($pdo, $character_id, $errors) {
 		$errors = "";
 	}
 	if (!$attributes) {
-		echo '<p>Ce personnage n\'existe pas !</p>';
+		// echo '<p>Ce personnage n\'existe pas !</p>';
+		$typeAlerte = "arguments";
+		include_once("./character_list_controller.php");
 	} else {
 		$customattributes = json_decode($attributes["custom_fields"]);
 		echo '

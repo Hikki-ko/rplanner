@@ -18,10 +18,14 @@ if (isset($_POST["edit_character"])) {
 }
 
 // Specifier l'ID d'un personnage renvoie à l'édition de ce personnage. Ne pas spécifier renvoie à la création de personnage.
-if (isset($_GET["character_id"]) && trim($_GET["character_id"]) !== "" && hasPerms($pdo, "character", $_GET["character_id"])) {
-	include_once("../view/pages/character_edition.php");
+if (isset($_GET["character_id"]) && trim($_GET["character_id"]) !== "") {
+	if(hasPerms($pdo, "character", $_GET["character_id"])) {
+		include_once("../view/pages/character_edition.php");
+	} else {
+		$typeAlerte = "perms";
+		include_once("./character_list_controller.php");
+	}
 } else {
 	include_once("../view/pages/character_creation.php");
 }
-
 ?>
