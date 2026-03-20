@@ -33,9 +33,9 @@ if (isset($_GET["character_id"]) && trim($_GET["character_id"]) !== "") {
 				$typeAlerte = "arguments";
 			} else {
 				$typeAlerte = "delSuccess";
+				deleteCharacter($pdo, $_GET["del_character_id"]);
+				include_once("./character_list_controller.php");
 			}
-		deleteCharacter($pdo, $_GET["del_character_id"]);
-		include_once("./character_list_controller.php");
 	} else {
 		$typeAlerte = "delPerms";
 		include_once("./character_list_controller.php");
