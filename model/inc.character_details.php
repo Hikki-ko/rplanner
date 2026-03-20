@@ -1,8 +1,16 @@
 <?php 
 	function getCharacterInfos($pdo) {
-		$connexion = $pdo->prepare("SELECT * FROM `characters`");
-		$connexion->execute();
-		$characters = $connexion->fetchAll(PDO::FETCH_ASSOC);
+		if($_SESSION['is_admin'] == 0) {
+			$connexion = $pdo->prepare("SELECT * FROM `characters` WHERE user_id = :user_id");
+			$connexion->execute([':user_id' => $_SESSION['user_id']]);
+			$characters = $connexion->fetchAll(PDO::FETCH_ASSOC);
+		} else {
+			$connexion = $pdo->prepare("SELECT * FROM `characters`");
+			$connexion->execute();
+			$characters = $connexion->fetchAll(PDO::FETCH_ASSOC);
+		}
+		
+		
 
 	return $characters;
 	}

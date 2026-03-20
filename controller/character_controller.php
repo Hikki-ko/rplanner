@@ -25,7 +25,23 @@ if (isset($_GET["character_id"]) && trim($_GET["character_id"]) !== "") {
 		$typeAlerte = "perms";
 		include_once("./character_list_controller.php");
 	}
-} else {
-	include_once("../view/pages/character_creation.php");
-}
+} elseif(isset($_GET["del_character_id"]) && trim($_GET["del_character_id"]) !== "") {
+	if(hasPerms($pdo, "character", $_GET["del_character_id"])) {
+		include_once("../model/inc.character_delete.php");
+		$character_delete = deleteCharacter($pdo, $_GET["del_character_id"]);
+		if(!$character_delete) {
+				$typeAlerte = "arguments";
+			} else {
+				$typeAlerte = "delSuccess";
+			}
+		deleteCharacter($pdo, $_GET["del_character_id"]);
+		include_once("./character_list_controller.php");
+	} else {
+		$typeAlerte = "delPerms";
+		include_once("./character_list_controller.php");
+	}
+	} else {
+		include_once("../view/pages/character_creation.php");
+	}
+	
 ?>

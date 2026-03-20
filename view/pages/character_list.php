@@ -147,6 +147,10 @@ include_once('../inc/functions/check_login.php');
 
 				$characters = getCharacterInfos($pdo);
 
+				if(!$characters) {
+					echo '<p class="text-white-50 mt-5">Vous n\'avez pas encore de personnages ! <a href="./character_controller.php">Créer un personnage</a></p>';
+				}
+
 				echo '<ul class="list-group mt-4">';
                 foreach ($characters as $character) {
 					echo '
@@ -161,7 +165,7 @@ include_once('../inc/functions/check_login.php');
 						</div>
 						<div class="d-flex gap-2">
 							<a href="character_controller.php?character_id=' . $character['character_id'] . '" class="btn btn-sm btn-outline-light">Modifier</a>
-							<a href="#" class="btn btn-sm btn-outline-danger">Supprimer</a>
+							<a href="character_controller.php?del_character_id=' . $character['character_id'] . '" class="btn btn-sm btn-outline-danger">Supprimer</a>
 						</div>
 					</li>
 					';
@@ -219,12 +223,12 @@ include_once('../inc/functions/check_login.php');
 			
 		</div>
 
-	<!-- Message d'erreur pour l'édition des personnages -->
+	<!-- Message d'erreur pour l'édition/suppression des personnages -->
 
 	<div id="customOverlayPerms" class="alert-overlay">
 		<div class="alert-box">
 			<h3>Attention !</h3>
-			<p id="customAlertMessagePerms">Vous n'avez pas la permission de modifier ce personnage !</p>
+			<p>Vous n'avez pas la permission de modifier ce personnage !</p>
 			<button type="button" id="closeAlertPerms">OK</button>
 		</div>
 	</div>
@@ -232,8 +236,24 @@ include_once('../inc/functions/check_login.php');
 	<div id="customOverlayArguments" class="alert-overlay">
 		<div class="alert-box">
 			<h3>Attention !</h3>
-			<p id="customAlertMessageArguments">Ce personnage n'existe pas !</p>
+			<p>Ce personnage n'existe pas !</p>
 			<button type="button" id="closeAlertArguments">OK</button>
+		</div>
+	</div>
+
+	<div id="customOverlay_delSuccess" class="alert-overlay">
+		<div class="alert-box">
+			<h3>Informations !</h3>
+			<p>Personnage supprimé avec succès !</p>
+			<button type="button" id="closeAlert_delSuccess">OK</button>
+		</div>
+	</div>
+
+	<div id="customOverlay_delPerms" class="alert-overlay">
+		<div class="alert-box">
+			<h3>Attention !</h3>
+			<p>Vous n'avez pas la permission de supprimer ce personnage !</p>
+			<button type="button" id="closeAlert_delPerms">OK</button>
 		</div>
 	</div>
 		
@@ -243,7 +263,7 @@ include_once('../inc/functions/check_login.php');
 			integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
 			crossorigin="anonymous"
 		></script>
-		<script src="../view/js/character_edit_error.js"></script>
+		<script src="../view/js/character_message.js"></script>
 
 		<?php
     if (isset($typeAlerte)) {
@@ -259,7 +279,19 @@ include_once('../inc/functions/check_login.php');
                         customAlertArguments();
                     });
                   </script>';
-        }
+        } elseif($typeAlerte === "delSuccess") {
+			echo '<script>
+				window.addEventListener("load", function() {
+					customAlert_delSuccess();
+				});
+				</script>';
+		} elseif($typeAlerte === "delPerms") {
+			echo '<script>
+				window.addEventListener("load", function() {
+					customAlert_delPerms();
+				});
+				</script>';
+		}
     }
     ?>
 </body>
