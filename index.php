@@ -171,10 +171,31 @@
 				<p>Projet de l'équipe n°2.</p>
 			</footer>
 		</div>
+
+		<div id="customOverlayLogout" class="alert-overlay">
+			<div class="alert-box">
+				<h3>Information !</h3>
+				<p>Vous êtes maintenant déconnecté</p>
+				<button type="button" id="closeAlertLogout">OK</button>
+			</div>
+		</div>
+
 		<script
 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
 			integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
 			crossorigin="anonymous"
 		></script>
+		<script src="./view/js/logout_message.js"></script>
+
+		<?php
+        if (isset($_GET['logout']) && $_GET['logout'] === "success") {
+            echo '<script>
+                    window.addEventListener("load", function() {
+                        customAlertLogout();
+                    });
+                  </script>';
+        }
+    ?>
+
 	</body>
 </html>

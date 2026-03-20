@@ -4,6 +4,6 @@
 
     session_destroy();
     unset($_SESSION);
-    header("Location: ../../index.php");
+    header("Location: ../../index.php?logout=success");
     exit;
 ?>

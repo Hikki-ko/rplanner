@@ -31,6 +31,7 @@ if (isset($_GET["character_id"]) && trim($_GET["character_id"]) !== "") {
 		$character_delete = deleteCharacter($pdo, $_GET["del_character_id"]);
 		if(!$character_delete) {
 				$typeAlerte = "arguments";
+				include_once("./character_list_controller.php");
 			} else {
 				$typeAlerte = "delSuccess";
 				deleteCharacter($pdo, $_GET["del_character_id"]);
