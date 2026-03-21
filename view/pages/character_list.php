@@ -151,7 +151,7 @@ include_once('../inc/functions/check_login.php');
 					echo '<p class="text-white-50 mt-5">Vous n\'avez pas encore de personnages ! <a href="./character_controller.php">Créer un personnage</a></p>';
 				}
 
-				echo '<ul class="list-group mt-4">';
+				echo '<ul class="list-group mt-4 mb-5">';
                 foreach ($characters as $character) {
 					echo '
 					<li class="list-group-item bg-dark text-white border-secondary d-flex justify-content-between align-items-center p-3">
@@ -216,6 +216,7 @@ include_once('../inc/functions/check_login.php');
 					';
             	}
 				echo '</ul>';
+				echo '<div class="mt-4"></div>';
 				?>
 
                 
