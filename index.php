@@ -120,7 +120,7 @@
 				<div class="row align-items-center m-0">
 					
 					<div class="col-4 text-start p-0">
-						<h3 class="mb-0">Cover</h3>
+						<h3 class="text-start m-0 fw-bold">Rplanner</h2>
 					</div>
 					
 					<div class="col-4 d-flex justify-content-center p-0">
@@ -152,11 +152,9 @@
 				</div>
 			</header>
 			<main class="px-3">
-				<h1>Cover your page.</h1>
+				<h1>Bienvenue !</h1>
 				<p class="lead">
-					Cover is a one-page template for building simple and beautiful home
-					pages. Download, edit the text, and add your own fullscreen background
-					photo to make it your own.
+					RPlanner, la plateforme pensée par et pour les créateurs. Construisez vos personnages, gérez vos campagnes et bien plus encore !
 				</p>
 				<p class="lead">
 					<a href="./view/pages/account_creation.php" class="btn btn-lg btn-light fw-bold border-white bg-white"
