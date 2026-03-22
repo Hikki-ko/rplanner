@@ -34,7 +34,11 @@
 		$connexion->execute();
 		$items = $connexion->fetchAll(PDO::FETCH_ASSOC);
 		foreach ($items as $item) {
-			echo $item["item_id"]." | ".$item["item_name"]." | ".$item["item_description"]."<a href=\"?delete_id=".$item["item_id"]."\">Supprimer l'objet</a><br>";
+			echo '<tr>
+        <td class="ps-3 text-white-50">'.$item['item_id'].'</td>
+        <td><strong>'.$item['item_name'].'</strong><br><span class="small text-white-50">'.$item['item_description'].'</span></td>
+        <td class="text-end pe-3"><a href="?del='.$item['item_id'].'" class="btn btn-sm btn-outline-danger border-0">Supprimer</a></td>
+      </tr>';
 		}
 	}
 	
