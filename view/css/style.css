@@ -139,8 +139,6 @@
 	margin-bottom: 1.5rem;
 }
 
-
-
 /* Alert box pour l'édition des pesonnages */
 
 .alert-overlay {
@@ -190,3 +188,9 @@
   background-color: #0056b3;
 }
 
+/* Gestion de campagnes */
+
+input.text-bg-dark::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+    opacity: 1; /* Nécessaire pour Firefox */
+}
