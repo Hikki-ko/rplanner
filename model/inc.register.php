@@ -4,7 +4,7 @@ include_once('inc.connection.php');
 
 function createAccount($pdo, $username, $password, $email) {
     // Vérifier si l'utilisateur existe déjà
-    $stmt = $pdo->prepare("SELECT id FROM users WHERE username = ?");
+    $stmt = $pdo->prepare("SELECT user_id FROM users WHERE username = ?");
     $stmt->execute([$username]);
     
     if ($stmt->fetch()) {

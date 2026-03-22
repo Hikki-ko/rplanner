@@ -2,11 +2,18 @@
 session_start();
 include_once("../../model/inc.connection.php");
 
-$_SESSION['token'] = bin2hex(random_bytes(32));
+$errors = $_SESSION['errors'] ?? [];
 
-if(!empty($_SESSION['errors'])): ?>
-    <div class="alert alert-danger"><?= implode('<br>', $_SESSION['errors']); unset($_SESSION['errors']); ?></div>
-<?php endif;
+if (empty($_SESSION['token'])) {
+    $_SESSION['token'] = bin2hex(random_bytes(32));
+}
+
+function display_error($field) {
+    if (isset($_SESSION['errors']) && is_array($_SESSION['errors']) && isset($_SESSION['errors'][$field])) {
+        $msg = $_SESSION['errors'][$field];
+        echo "<div class='text-danger small mb-1' style='text-align: left; font-weight: bold;'>⚠️ $msg</div>";
+    }
+}
 
 ?>
 
@@ -131,6 +138,7 @@ if(!empty($_SESSION['errors'])): ?>
 						<!-- Identifiant -->
 						 <div class="mb-3">
 							<label class="form-label">Identifiant</label>
+							<?php display_error('username'); ?>
 							<div class="input-group">
 								<span class="input-group-text">@</span>
 								<input 
@@ -147,6 +155,7 @@ if(!empty($_SESSION['errors'])): ?>
 							<label class="form-label">
 								Mot de passe
 							</label>
+							<?php display_error('password'); ?>
 							<input 
 							type="password"
 							class="form-control"
@@ -159,6 +168,7 @@ if(!empty($_SESSION['errors'])): ?>
 							<label class="form-label">
 								Confirmation du mot de passe
 							</label>
+							<?php display_error('confirm'); ?>
 							<input 
 							type="password"
 							class="form-control"
@@ -194,6 +204,8 @@ if(!empty($_SESSION['errors'])): ?>
 							</label>
 						 </div>
 						 <!-- Captcha -->
+						  <label class="form-label d-block text-start">Vérification</label>
+						  <?php display_error('captcha'); ?>
 							<img src="../../model/inc.captcha.php">
 							<input 
 							type="text"
@@ -217,5 +229,6 @@ if(!empty($_SESSION['errors'])): ?>
 			integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
 			crossorigin="anonymous"
 		></script>
+		<?php unset($_SESSION['errors']); ?>
 	</body>
 </html>

@@ -2,7 +2,7 @@
 session_start();
 
 // Création du code aléatoire
-$_SESSION['captcha'] = rand(10000,99999);
+$_SESSION['captcha'] = (string)rand(10000, 99999);
 $captcha = $_SESSION['captcha'];
 
 // Création d'une image

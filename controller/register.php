@@ -13,14 +13,31 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $errors = [];
 
-    // Validations
-    if ($token !== $_SESSION['token']) $errors[] = "Erreur de sécurité CSRF.";
-    if ($captcha !== ($_SESSION['captcha'] ?? '')) $errors[] = "Captcha incorrect.";
-    if (empty($username) || strlen($password) < 8) $errors[] = "Données invalides.";
-    if ($password !== $confirm) $errors[] = "Les mots de passe ne correspondent pas.";
+    // Validations avec clés nommées pour l'affichage spécifique
+    if ($token !== ($_SESSION['token'] ?? '')) {
+        $errors['csrf'] = "Erreur de sécurité CSRF.";
+    }
+    
+    // Forcer le type string pour comparer avec le POST
+    if ($captcha !== (string)($_SESSION['captcha'] ?? '')) {
+        $errors['captcha'] = "Le code captcha est incorrect.";
+    }
+
+    if (empty($username)) {
+        $errors['username'] = "L'identifiant est obligatoire.";
+    }
+
+    if (strlen($password) < 8) {
+        $errors['password'] = "Le mot de passe doit faire au moins 8 caractères.";
+    }
+
+    if ($password !== $confirm) {
+        $errors['confirm'] = "Les mots de passe ne correspondent pas.";
+    }
 
     if (empty($errors)) {
-        // APPEL AU MODELE
+        unset($_SESSION['captcha']);
+        
         $result = createAccount($pdo, $username, $password, $email);
         
         if ($result === true) {
@@ -28,12 +45,21 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             header("Location: login.php");
             exit;
         } else {
-            $errors[] = $result;
+            // Si le modèle renvoie une erreur (ex: email déjà pris)
+            $errors['global'] = $result; 
         }
     }
     
-    // Si on arrive ici, il y a des erreurs
+    // Enregistre les erreurs (le tableau associatif) en session
     $_SESSION['errors'] = $errors;
-    header("Location: ../view/pages/account_creation.php"); // Retour au formulaire
+    
+    // Renvoie aussi les données saisies (sauf le mot de passe) 
+    // pour éviter à l'utilisateur de tout retaper
+    $_SESSION['old'] = [
+        'username' => $username,
+        'email' => $email
+    ];
+
+    header("Location: ../view/pages/account_creation.php");
     exit;
 }
