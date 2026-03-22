@@ -44,9 +44,9 @@ include_once('../inc/functions/check_login.php');
         </div>
 
         <section class="mb-5">
+            <h4 class="card-title fw-bold mb-4 text-start">Ajouter un objet</h4>
             <div class="card bg-dark border-secondary rounded-4 shadow-sm">
                 <div class="card-body p-4">
-                    <h4 class="card-title fw-bold mb-4 text-start">Ajouter un objet</h4>
                     <form method="POST" id="add_item_form">
                         <div class="row g-3">
                             <div class="col-md-4">
