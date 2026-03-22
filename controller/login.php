@@ -3,7 +3,7 @@ session_start();
 
 // Appelle du modèle
 
-include_once("../model/inc.user_login.php");
+include_once("model/inc.user_login.php");
 
 // Définition des listes et variables de vérifications
 
@@ -68,7 +68,7 @@ if (isset($_POST['login'])) {
         // </div>
         // ';
 
-        header("Location: ../controller/dashboard_controller.php");
+        header("Location: /dashboard");
       } else {
         $erreurs_connexion[] = "Le mot de passe est invalide";
       }
@@ -78,5 +78,5 @@ if (isset($_POST['login'])) {
 
 //Appelle de la vue
 
-require_once("../view/pages/account_login.php");
+require_once("view/pages/account_login.php");
 ?>

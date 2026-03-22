@@ -60,6 +60,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         'email' => $email
     ];
 
-    header("Location: ../view/pages/account_creation.php");
+    header("Location: /registerview");
     exit;
 }

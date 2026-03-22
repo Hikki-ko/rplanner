@@ -165,7 +165,7 @@ function createCharacter($pdo) {
 		':image' => $_POST["image"],
 		':custom_fields' => $custom_fields
 		]);
-		header('Location: ./campaign_controller.php');
+		header('Location: /character_list');
 		exit;
 	} else {
 		return $errors;

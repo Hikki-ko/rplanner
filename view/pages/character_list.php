@@ -1,5 +1,5 @@
 <?php 
-include_once('../inc/functions/check_login.php');
+include_once('inc/functions/check_login.php');
 ?>
 
 <!DOCTYPE html>
@@ -53,10 +53,10 @@ include_once('../inc/functions/check_login.php');
             <div class="col-12">
                 <?php
                 if(isConnected()) {
-                    include_once("../inc/inc_pages_header.php");
+                    include_once("inc/inc_pages_header.php");
                 } else {
                     echo '<nav class="nav nav-masthead mb-4">
-                            <a class="nav-link fw-bold py-1 px-0 active" href="../index.php">Retourner à l\'accueil</a>
+                            <a class="nav-link fw-bold py-1 px-0 active" href="/">Retourner à l\'accueil</a>
                             <a class="nav-link fw-bold py-1 px-0 ms-3" href="#">Tutoriel</a>
                           </nav>';
                 }
@@ -73,7 +73,7 @@ include_once('../inc/functions/check_login.php');
                 if(!$characters) {
                     echo '<div class="text-center py-5 bg-dark border border-secondary rounded-4">
                             <p class="text-white-50 mb-0">Vous n\'avez pas encore de personnages ! <br>
-                            <a href="./character_controller.php" class="btn btn-primary mt-3 rounded-pill">Créer mon premier personnage</a></p>
+                            <a href="/characters" class="btn btn-primary mt-3 rounded-pill">Créer mon premier personnage</a></p>
                           </div>';
                 } else {
                 ?>
@@ -102,9 +102,9 @@ include_once('../inc/functions/check_login.php');
                                 </td>
                                 <td class="text-end pe-4">
                                     <div class="btn-group">
-                                        <a href="character_controller.php?character_id=<?= $character['character_id'] ?>" 
+                                        <a href="/characters?character_id=<?= $character['character_id'] ?>" 
                                            class="btn btn-sm btn-outline-light px-3">Modifier</a>
-                                        <a href="character_controller.php?del_character_id=<?= $character['character_id'] ?>" 
+                                        <a href="/characters?del_character_id=<?= $character['character_id'] ?>" 
                                            class="btn btn-sm btn-outline-danger px-3" 
                                            onclick="return confirm('Supprimer définitivement ce personnage ?');">Supprimer</a>
                                     </div>

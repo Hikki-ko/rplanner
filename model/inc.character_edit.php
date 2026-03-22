@@ -164,7 +164,7 @@ function editCharacter($pdo) {
 		':custom_fields' => $custom_fields,
 		':character_id' => $_POST["character_id"]
 		]);
-		header('Location: ./campaign_controller.php');
+		header('Location: /character_list');
 		exit;
 	} else {
 		return $errors;

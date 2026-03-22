@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>RPlanner</title>
+        <title>404 - RPlanner</title>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -111,10 +111,7 @@
         </div>
         <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
             <main class="px-3 m-auto">
-                <h1>Vous n'êtes pas autorisé à consulter cette page !</h1>
-                <p class="lead">
-                    Vous devez d'abord être connecté.
-                </p>
+                <h1>Cette page n'existe pas !</h1>
                 <p class="lead mt-5">
                     <a href="/" class="btn btn-lg btn-light fw-bold border-white bg-white"
                         >Revenir à l'accueil</a

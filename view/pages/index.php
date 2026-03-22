@@ -1,16 +1,17 @@
-<!doctype html>
-<html lang="fr">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Connexion</title>
+		<title>RPlanner</title>
 		<link
 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
 			rel="stylesheet"
 			integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="../view/css/style.css" />
+		<link rel="stylesheet" href="./view/css/cover.css" />
+		<link rel="stylesheet" href="./view/css/style.css" />
 	</head>
 	<body class="d-flex h-100 text-center text-bg-dark">
 		<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -108,77 +109,66 @@
 				</li>
 			</ul>
 		</div>
+		<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+			<header class="mb-auto">
+				<div class="row align-items-center m-0">
+					
+					<div class="col-4 text-start p-0">
+						<h3 class="text-start m-0 fw-bold">Rplanner</h2>
+					</div>
+					
+					<div class="col-4 d-flex justify-content-center p-0">
+						<nav class="nav nav-masthead">
+							<a class="nav-link fw-bold py-1 px-0 active" aria-current="page" href="#">Home</a>
+							<a class="nav-link fw-bold py-1 px-0 ms-3" href="/characters">Créer mon personnage</a>
+							<a class="nav-link fw-bold py-1 px-0 ms-3" href="#">Tutoriel</a>
+						</nav>
+					</div>
 
-		<h2 class="text-start ps-3 pt-3 fw-bold"><a class="title-redirection" href="/">Rplanner</a></h2>
-
-		<div class="container-fluid vh-100">
-			<!-- Left -->
-			<div class="row d-flex justify-content-center align-items-center h-100">
-				<div class="col-md-9 col-lg-6 col-xl-5">
-					<img
-						src="https://doodleipsum.com/600/hand-drawn?i=0293217a2126d91159f5a6717396cbe4"
-						class="img-fluid"
-						alt="Sample image"
-					/>
+					<div class="col-4 text-end p-0">
+						<div class="fw-bold text-white d-inline-block connexion-info">
+							<?php 
+								if(isConnected()){
+									echo '<div class="dropdown d-flex align-items-center gap-3">';
+									echo '
+									<button class="btn btn-outline-light rounded-pill px-4 dropdown-toggle text-capitalize" type="button" data-bs-toggle="dropdown" aria-expanded="false">Bonjour ' . htmlspecialchars($_SESSION['username']) . ' !</button>
+									<ul class="dropdown-menu dropdown-menu-dark rounded-3">
+										<li><a class="dropdown-item py-2" href="/dashboard">Mon espace</a></li>
+										<li><hr class="dropdown-divider"></li>
+										<li><a class="dropdown-item text-danger fw-bold py-2" href="/logout">Déconnexion</a></li>
+									</ul>';
+									echo '</div>';
+								}
+							?>
+						</div>
+					</div>
+					
 				</div>
-				<!-- Right -->
-				<div class="col-md-8 col-lg-6 col-xl-4 offset-md-1 text-start mt-5">
-					<h2 class="text-center mb-4">Connexion</h2>
-					<form action="/login" method="POST">
-						<div class="mb-3">
-							<label for="usernametInput" class="form-label"
-								>Identifiant</label
-							>
-							<input
-								type="text"
-								class="form-control"
-								name="usernametInput"
-								id="usernametInput"
-								placeholder="Votre identifiant"
-							/>
-							<?php
-								if (!empty($erreurs_username)) {
-									echo "<div class='text-danger small mt-1'>";
-									echo $erreurs_username[0];
-									echo "</div>";
-								}
-							?>
-						</div>
-						<div class="mb-4">
-							<label for="passwordInput" class="form-label"
-								>Mot de passe</label
-							>
-							<input
-								type="password"
-								class="form-control"
-								name="passwordInput"
-								id="passwordInput"
-								placeholder="Votre mot de passe"
-							/>
-							<?php
-								if (!empty($erreurs_password)) {
-									echo "<div class='text-danger small mt-1'>";
-									echo $erreurs_password[0];
-									echo "</div>";
-								}
-							?>
-							<?php
-								if (!empty($erreurs_connexion)) {
-									echo "<div class='text-danger small mt-1'>";
-									echo $erreurs_connexion[0];
-									echo "</div>";
-								}
-							?>
-						</div>
-						<div class="text-center mb-3">
-							<button type="submit" class="btn btn-primary" name="login">Se connecter</button>
-						</div>
+			</header>
+			<main class="px-3">
+				<h1>Bienvenue !</h1>
+				<p class="lead">
+					RPlanner, la plateforme pensée par et pour les créateurs. Construisez vos personnages, gérez vos campagnes et bien plus encore !
+				</p>
+				<p class="lead">
+					<a href="/register" class="btn btn-lg btn-light fw-bold border-white bg-white"
+						>Commencer mon aventure</a
+					>
+				</p>
+				<p class="lead">
+					Déjà membre ? <a href="/login">Connectez-vous !</a>
+				</p>
+			</main>
+			<footer class="mt-auto text-white-50">
+				<p>Projet de l'équipe n°2.</p>
+			</footer>
+		</div>
 
-						<p class="text-center mt-4">Vous n'avez pas de compte ? <a href="/register">Créer un compte</a></p>
-
-
-					</form>
-				</div>
+		<div id="customOverlayLogout" class="alert-overlay">
+			<div class="alert-box">
+				<h3>Information !</h3>
+				<p>Vous êtes maintenant déconnecté</p>
+				<button type="button" id="closeAlertLogout">OK</button>
 			</div>
 		</div>
 
@@ -187,5 +177,17 @@
 			integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
 			crossorigin="anonymous"
 		></script>
+		<script src="./view/js/logout_message.js"></script>
+
+		<?php
+        if (isset($_GET['logout']) && $_GET['logout'] === "success") {
+            echo '<script>
+                    window.addEventListener("load", function() {
+                        customAlertLogout();
+                    });
+                  </script>';
+        }
+    ?>
+
 	</body>
 </html>

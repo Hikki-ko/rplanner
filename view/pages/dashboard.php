@@ -1,5 +1,5 @@
 <?php 
-include_once('../inc/functions/check_login.php');
+include_once('inc/functions/check_login.php');
 ?>
 
 <!doctype html>
@@ -38,7 +38,7 @@ include_once('../inc/functions/check_login.php');
                 <div class="col-12">
                     <?php
                         if(isConnected()) {
-                            include_once("../inc/inc_pages_header.php");
+                            include_once("inc/inc_pages_header.php");
                             echo '<h1 class="display-5 fw-bold mb-1 text-capitalize">Bienvenue ' . htmlspecialchars($_SESSION['username']) .' !</h1>';
                         }
                     ?>
@@ -62,7 +62,7 @@ include_once('../inc/functions/check_login.php');
                                 <h5 class="card-title fw-bold">Mes personnages</h5>
                                 <p class="card-text text-white-50 small mb-4 flex-grow-1">Consultez et modifiez les fiches de vos héros en un clin d'œil.</p>
                                 <div class="mt-auto">
-                                    <a href="../controller/character_list_controller.php" class="btn btn-outline-light rounded-pill px-4 stretched-link">Accéder</a>
+                                    <a href="/character_list" class="btn btn-outline-light rounded-pill px-4 stretched-link">Accéder</a>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +77,7 @@ include_once('../inc/functions/check_login.php');
                                 <h5 class="card-title fw-bold">Nouveau personnage</h5>
                                 <p class="card-text text-white-50 small mb-4 flex-grow-1">Ajoutez un nouveau héros pour vos prochaines aventures épiques.</p>
                                 <div class="mt-auto">
-                                    <a href="../controller/character_controller.php" class="btn btn-outline-light rounded-pill px-4 stretched-link">Créer</a>
+                                    <a href="/characters" class="btn btn-outline-light rounded-pill px-4 stretched-link">Créer</a>
                                 </div>
                             </div>
                         </div>
@@ -92,7 +92,7 @@ include_once('../inc/functions/check_login.php');
                                 <h5 class="card-title fw-bold">Mes campagnes</h5>
                                 <p class="card-text text-white-50 small mb-4 flex-grow-1">Suivez vos scénarios en cours et gérez l'avancement de vos quêtes.</p>
                                 <div class="mt-auto">
-                                    <a href="../controller/campaign_controller.php" class="btn btn-outline-light rounded-pill px-4 stretched-link">Gérer</a>
+                                    <a href="/campaigns" class="btn btn-outline-light rounded-pill px-4 stretched-link">Gérer</a>
                                 </div>
                             </div>
                         </div>

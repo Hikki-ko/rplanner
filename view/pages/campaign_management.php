@@ -1,5 +1,5 @@
 <?php 
-include_once('../inc/functions/check_login.php');
+include_once('inc/functions/check_login.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -31,10 +31,10 @@ include_once('../inc/functions/check_login.php');
             <div class="col-12">
                 <?php
                     if(isConnected()) {
-                        include_once("../inc/inc_pages_header.php");
+                        include_once("inc/inc_pages_header.php");
                     } else {
                         echo '<nav class="nav nav-masthead mb-4">
-                                <a class="nav-link fw-bold py-1 px-0 active" href="../index.php">Retourner à l\'accueil</a>
+                                <a class="nav-link fw-bold py-1 px-0 active" href="/">Retourner à l\'accueil</a>
                                 <a class="nav-link fw-bold py-1 px-0 ms-3" href="#">Tutoriel</a>
                               </nav>';
                     }

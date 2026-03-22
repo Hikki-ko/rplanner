@@ -188,35 +188,9 @@
   background-color: #0056b3;
 }
 
-/* Style du tableau professionnel */
-.table {
-    border-collapse: separate;
-    border-spacing: 0;
-}
+/* Gestion de campagnes */
 
-.table thead th {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 700;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-bottom: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-.table-hover tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.03) !important;
-    transition: background-color 0.3s ease;
-}
-
-/* On enlève les bordures par défaut pour un look plus "flat" */
-.table td {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-}
-
-.btn-group .btn {
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    font-weight: 600;
+input.text-bg-dark::placeholder {
+    color: rgba(255, 255, 255, 0.6) !important;
+    opacity: 1; /* Nécessaire pour Firefox */
 }
