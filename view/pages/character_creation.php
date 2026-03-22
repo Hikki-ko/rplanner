@@ -116,11 +116,11 @@
 		<div class="container-fluid ps-3 text-start">
         <?php
 			if(isConnected()) {
-				include_once("../inc/inc_pages_header.php");
+				include_once("inc/inc_pages_header.php");
 			}else{
 				echo "<div class=\"col-4 d-flex justify-content-center p-0\">
 						<nav class=\"nav nav-masthead\">
-							<a class=\"nav-link fw-bold py-1 px-0 active\" aria-current=\"page\" href=\"../index.php\">Retourner à l'acceuil</a>
+							<a class=\"nav-link fw-bold py-1 px-0 active\" aria-current=\"page\" href=\"/\">Retourner à l'acceuil</a>
 							<a class=\"nav-link fw-bold py-1 px-0 ms-3\" href=\"#_\">Tutoriel</a>
 						</nav>
 					</div>";

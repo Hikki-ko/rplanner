@@ -1,6 +1,6 @@
 <?php
 session_start();
-include_once("../../model/inc.connection.php");
+include_once("model/inc.connection.php");
 
 $errors = $_SESSION['errors'] ?? [];
 
@@ -219,7 +219,7 @@ function display_error($field) {
 							Créer mon compte
 						 </button>
 					</form>
-					<p><em>Vous avez déjà un compte ? <a href="../../controller/login.php">Connectez-vous !</a></em></p>
+					<p><em>Vous avez déjà un compte ? <a href="/login.php">Connectez-vous !</a></em></p>
 			</div>
 				</div>	
 		</main>
