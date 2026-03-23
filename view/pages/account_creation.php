@@ -29,7 +29,7 @@ function display_error($field) {
 			integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
 			crossorigin="anonymous"
 		/>
-		<link rel="stylesheet" href="../css/style.css" />
+		<link rel="stylesheet" href="view/css/style.css" />
 	</head>
 	<body class="d-flex h-100 text-center text-bg-dark">
 		<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -219,7 +219,7 @@ function display_error($field) {
 							Créer mon compte
 						 </button>
 					</form>
-					<p><em>Vous avez déjà un compte ? <a href="/login.php">Connectez-vous !</a></em></p>
+					<p><em>Vous avez déjà un compte ? <a href="/login">Connectez-vous !</a></em></p>
 			</div>
 				</div>	
 		</main>
