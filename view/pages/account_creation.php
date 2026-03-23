@@ -132,7 +132,7 @@ function display_error($field) {
 			<div class="row justify-content-center">
 				<div class="col-md-6 col-lg-4">
 					<h1 class="text-center mb-4">Création de compte</h1>
-					<form action="../../controller/register.php" method="POST">
+					<form action="/registeraction" method="POST">
 						<!-- Token CSRF -->
 						<input type="hidden" name="csrf_token" value="<?= $_SESSION['token'] ?>">
 						<!-- Identifiant -->
@@ -206,7 +206,7 @@ function display_error($field) {
 						 <!-- Captcha -->
 						  <label class="form-label d-block text-start">Vérification</label>
 						  <?php display_error('captcha'); ?>
-							<img src="../../model/inc.captcha.php">
+							<img src="/captcha">
 							<input 
 							type="text"
 							name="captcha"

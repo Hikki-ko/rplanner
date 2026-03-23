@@ -24,7 +24,7 @@ if ($request === '/') {
     include 'controller/login.php';
 
 } elseif ($request === '/register') {
-    include 'controller/register.php';
+    include 'view/pages/account_creation.php';
 
 } elseif ($request === '/character_list') {
     include 'controller/character_list_controller.php';
@@ -35,8 +35,11 @@ if ($request === '/') {
 } elseif ($request === '/logout') {
     include 'controller/logout.php';
 
-} elseif ($request === '/registerview') {
-    include 'view/pages/account_creation.php';
+} elseif ($request === '/registeraction') {
+    include 'controller/register.php';
+
+} elseif ($request === '/captcha') {
+    include 'model/inc.captcha.php';
 
 } else {
     http_response_code(404);

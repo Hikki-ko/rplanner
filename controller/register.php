@@ -42,7 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         
         if ($result === true) {
             $_SESSION['success'] = "Compte créé ! Connectez-vous.";
-            header("Location: login.php");
+            header("Location: /login");
             exit;
         } else {
             // Si le modèle renvoie une erreur (ex: email déjà pris)
